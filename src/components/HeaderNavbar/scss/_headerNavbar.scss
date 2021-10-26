@@ -1,0 +1,42 @@
+@import "../../../asset/scss/custom_variables";
+
+.logo 
+{
+  display: block;
+  width: 99px;
+  height: 57px;
+  background: url("./logo.svg") no-repeat;
+  text-indent: 101%;
+  white-space: none;
+  overflow: hidden;
+}
+.custom_nav
+{
+  a
+  {
+    display: flex;
+    align-items: flex-end;
+    padding: 18px 10px;
+  }
+  span
+  {
+    margin: 6px 8px;
+    line-height: 1.25;
+    font-size: 14px;
+  }
+  li:nth-child(1) span
+  {
+    color: $primary;
+    border-bottom: 1px solid $primary;
+  }
+  li:nth-child(2) span
+  {
+    color: $secondary;
+    border-bottom: 1px solid $secondary;
+  }
+  li:nth-child(3) span
+  {
+    color: $info;
+    border-bottom: 1px solid $info;
+  }
+}

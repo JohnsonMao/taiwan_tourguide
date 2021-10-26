@@ -1,13 +1,35 @@
 $primary:   #FF1D6C;
 $secondary: #FFB72C;
 $info:      #007350;
-$background:#E5E5E5;
 $dark:      #0D0B0C;
 $light:     #FFFFFF;
 $gray-light:#D2D2D2;
 $gray:      #ACACAC;
 $shadow:    rgba(13, 11, 12, 0.2);
+$body-bg:   #E5E5E5;
+$body-color: $dark;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500&family=Roboto:wght@500&display=swap');
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "info": $info,
+  "dark": $dark,
+  "light": $light
+);
 
-$font-family: "Noto Sans TC", "Roboto", "sans-serif";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&family=Roboto:wght@400&display=swap');
+
+$font-family-sans-serif: "Noto Sans TC", "Roboto", "sans-serif";
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer * .75,
+  4: $spacer,
+  5: $spacer * 1.125,
+  6: $spacer * 1.75
+);
+
+$link-decoration: none;
