@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
-import './scss/_headerNavbar.scss';
-import { ReactComponent as Triangle } from './scss/triangle.svg';
-import { ReactComponent as Square } from './scss/square.svg';
-import { ReactComponent as Circle } from './scss/circle.svg';
+import './static/_headerNavbar.scss';
+import { ReactComponent as Triangle } from './static/triangle.svg';
+import { ReactComponent as Square } from './static/square.svg';
+import { ReactComponent as Circle } from './static/circle.svg';
 
 export default function HeaderNavbar() {
   return (
@@ -16,21 +16,21 @@ export default function HeaderNavbar() {
         </Navbar.Brand>
         <Nav as="ul" className="custom_nav">
           <Nav.Item as="li">
-            <NavLink to="/">
+            <NavLink to="/" className="d-flex align-items-end">
               <Triangle/>
-              <span>台灣景點</span>
+              <span className="fs-5 lh-sm">台灣景點</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to="/tourism">
+            <NavLink to="/tourism" className="d-flex align-items-end">
               <Square/>
-              <span>美食住宿</span>
+              <span className="fs-5 lh-sm">美食住宿</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to="/bus">
+            <NavLink to="/bus" className="d-flex align-items-end">
               <Circle/>
-              <span>景點交通</span>
+              <span className="fs-5 lh-sm">景點交通</span>
             </NavLink>
           </Nav.Item>
         </Nav>

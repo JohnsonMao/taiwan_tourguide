@@ -1,0 +1,16 @@
+@import "../../../asset/scss/custom_variables";
+
+.custom_banner
+{
+  height: calc(100vh - 129px);
+  overflow: hidden;
+  img
+  {
+    position: relative;
+    top: -20%;
+  }
+  form + form
+  {
+    margin-top: 10px;
+  }
+}

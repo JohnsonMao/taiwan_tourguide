@@ -17,7 +17,7 @@ $theme-colors: (
   "light": $light
 );
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&family=Roboto:wght@400;700&display=swap');
 
 $font-family-sans-serif: "Noto Sans TC", "Roboto", "sans-serif";
 
@@ -32,4 +32,21 @@ $spacers: (
   6: $spacer * 1.75
 );
 
+$font-size-base: 1rem;
+$font-sizes: (
+  1: 50px,
+  2: $font-size-base * 1.25,
+  3: $font-size-base * 1.125,
+  4: $font-size-base,
+  5: $font-size-base * .875,
+  6: $font-size-base * .75
+);
+
 $link-decoration: none;
+
+$input-bg: $light;
+$input-border-width: 0;
+$input-focus-box-shadow: none;
+$input-placeholder-color: $gray-light;
+$input-btn-padding-y: 8.5px;
+$input-btn-padding-x: 24px;
