@@ -44,9 +44,13 @@ $font-sizes: (
 
 $link-decoration: none;
 
-$input-bg: $light;
-$input-border-width: 0;
-$input-focus-box-shadow: none;
+/*
+ * `$input`
+ */
+$input-bg:                $light;
+$input-border-width:      0;
+$input-focus-width:       0;
 $input-placeholder-color: $gray-light;
-$input-btn-padding-y: 8.5px;
-$input-btn-padding-x: 24px;
+$input-btn-padding-y:     8px;
+$input-btn-padding-x:     12px;
+$form-select-indicator:   url('data:image/svg+xml,<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7.5L0.102887 0.750001L7.89711 0.750001L4 7.5Z" fill="#0D0B0C"/></svg>');

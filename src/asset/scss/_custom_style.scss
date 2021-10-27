@@ -1,0 +1,15 @@
+.shadow
+{
+  position: relative;
+
+  &::before
+  {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 52px;
+    background: #000;
+    box-shadow: 0 0 10px $primary;
+  }
+}

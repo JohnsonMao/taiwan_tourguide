@@ -8,13 +8,13 @@ import './static/_banner.scss';
 export default function Banner(props) {
   const { img } = props;
   return (
-    <Card className="border-0 p-5">
+    <Card className="shadow border-0 p-5">
       <div className="custom_banner">
-        <img src={require(`../../pages/${img}`).default}/>
+        <img src={require(`../../pages/${img}`).default} alt="banner"/>
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">
           <div>
             <Card.Title as="h2" className="text-light fs-1 fw-bold">Welcome to 
-              <span className="text-primary">Taiwan°</span>
+              <span className="text-primary"> Taiwan°</span>
             </Card.Title>
             <Card.Text className="text-light">台北、台中、台南、屏東、宜蘭……遊遍台灣</Card.Text>
             <Form>
@@ -27,7 +27,7 @@ export default function Banner(props) {
                 />
                 </Col>
                 <Col xs="auto">
-                  <Button className="p-2"><Search/></Button>
+                  <Button className="lh-1 p-2"><Search/></Button>
                 </Col>
               </Row>
             </Form>
@@ -50,7 +50,7 @@ export default function Banner(props) {
                   </Form.Select>
                 </Col>
                 <Col xs="auto">
-                  <Button variant="secondary" className="p-2"><GPS/></Button>
+                  <Button variant="secondary" className="lh-1 p-2"><GPS/></Button>
                 </Col>
               </Row>
             </Form>
