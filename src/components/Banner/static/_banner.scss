@@ -2,8 +2,13 @@
 
 .custom_banner
 {
-  height: calc(100vh - 129px);
-  overflow: hidden;
+  margin-bottom: 90px;
+
+  & > div
+  {
+    height: calc(100vh - 129px);
+    overflow: hidden;
+  }
   img
   {
     position: relative;
