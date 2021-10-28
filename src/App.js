@@ -11,7 +11,6 @@ export default function App() {
       <Switch>
         <Route path="/" component={Home}/>
       </Switch>
-      <div>123</div>
     </BrowserRouter>
   )
 }

@@ -42,8 +42,13 @@ $font-sizes: (
   6: $font-size-base * .75
 );
 
+$box-shadow: 0 .2rem .2rem $shadow;
+$border-radius: 6px;
+
 $link-decoration: none;
 
+$card-border-width:   0;
+$card-border-radius:  0;
 /*
  * `$input`
  */
@@ -54,3 +59,8 @@ $input-placeholder-color: $gray-light;
 $input-btn-padding-y:     8px;
 $input-btn-padding-x:     12px;
 $form-select-indicator:   url('data:image/svg+xml,<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7.5L0.102887 0.750001L7.89711 0.750001L4 7.5Z" fill="#0D0B0C"/></svg>');
+
+$aspect-ratios: (
+  "5x3": calc(3 / 5 * 100%),
+  "3x4": calc(4 / 3 * 100%)
+);

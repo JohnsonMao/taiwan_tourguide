@@ -12,8 +12,9 @@
   img
   {
     position: relative;
-    top: -20%;
+    bottom: 20%;
     min-width: 100%;
+    min-height: 100%;
     object-fit: cover;
   }
   form + form

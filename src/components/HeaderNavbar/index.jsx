@@ -9,7 +9,7 @@ import { ReactComponent as Circle } from './static/circle.svg';
 
 export default function HeaderNavbar() {
   return (
-    <Navbar className="p-0" bg="light">
+    <Navbar className="p-0" sticky="top" bg="light">
       <Container className="align-items-end">
         <Navbar.Brand as="h1" className="m-0 py-5">
           <Link to="#" className="logo">Taiwan° Tourguide</Link>

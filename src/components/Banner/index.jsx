@@ -8,7 +8,7 @@ import './static/_banner.scss';
 export default function Banner(props) {
   const { img } = props;
   return (
-    <Card className="custom_banner custom_shadow border-0 p-5">
+    <Card className="custom_banner custom_shadow p-5">
       <div>
         <img src={require(`../../pages/${img}`).default} alt="banner"/>
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">
