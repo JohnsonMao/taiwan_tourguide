@@ -53,7 +53,7 @@ export default function Home() {
       <Container>
         <Location/>
         <ActivityList/>
-        <CardList/>
+        <CardList icon='square' title='熱門餐飲'/>
       </Container>
     </>
   )

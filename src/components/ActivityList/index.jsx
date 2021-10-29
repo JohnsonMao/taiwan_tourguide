@@ -13,7 +13,7 @@ export default function ActivityList() {
       </h4>
       <Row xs={1} sm={2}>
         <Col>
-          <Card className="p-3">
+          <Card className="custom_shadow p-3">
             <Row className="gx-4">
               <Col>
                 <Ratio aspectRatio="1x1">
@@ -35,12 +35,12 @@ export default function ActivityList() {
                 <Card.Footer 
                   className="bg-light d-flex justify-content-between p-0 pe-3"
                 >
-                  <span className="fs-4 d-flex align-items-center">
+                  <span className="fs-5 d-flex align-items-center">
                     <MapM className="fill-primary"/>地點
                   </span>
                   <Button 
                     variant="outline-primary" 
-                    className="fs-4 px-7 py-2"
+                    className="fs-5 px-7 py-2"
                   >
                     活動詳情
                   </Button>

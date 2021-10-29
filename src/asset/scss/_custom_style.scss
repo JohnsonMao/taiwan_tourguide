@@ -18,14 +18,18 @@
   &::before
   {
     left: 1%;
-    transform: skewY(-4deg);
+    transform: skewY(-6deg);
   }
 
   &::after
   {
     right: 1%;
-    transform: skewY(4deg);
+    transform: skewY(6deg);
   }
+}
+.title
+{
+  height: 42px;
 }
 .section
 {
