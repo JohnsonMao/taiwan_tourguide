@@ -4,11 +4,10 @@ export default function ajax(url, data = {}, type = 'GET') {
   if (type === 'GET') {
     let paramStr ='';
     Object.keys(data).forEach( key => {
-      paramStr += key + '=' + data[key] + '&'
+      paramStr += key + '=' + data[key].toString() + '&'
     })
-    if (paramStr) {
-      paramStr = paramStr.substring(0, paramStr.length - 1);
-    }
+    paramStr += '$format=JSON'
+
     return axios.get(url + '?' + paramStr);
   } else {
     return axios.post(url, data);
