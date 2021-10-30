@@ -6,14 +6,14 @@ import { ReactComponent as MapM } from '../../asset/icon/map_M.svg';
 
 export default function ActivityList() {
   return (
-    <section className="section">
+    <main className="section">
       <h4 className="fw-normal fs-2 mb-3">
         <Triangle className="me-4"/>
         熱門活動
       </h4>
-      <Row xs={1} sm={2}>
-        <Col>
-          <Card className="custom_shadow p-3">
+      <Row xs={1} sm={2} as="ul">
+        <Col as="li">
+          <Card className="custom_shadow activity p-3">
             <Row className="gx-4">
               <Col>
                 <Ratio aspectRatio="1x1">
@@ -50,6 +50,6 @@ export default function ActivityList() {
           </Card>
         </Col>
       </Row>
-    </section>
+    </main>
   )
 }

@@ -17,8 +17,8 @@ export default function CardList(props) {
         }
         { title }
       </h4>
-      <Row xs={2} sm={4} md={5}>
-        <Col>
+      <Row xs={2} sm={4} md={5} as="ul">
+        <Col as="li">
           <Card className="custom_shadow p-3">
             <Ratio aspectRatio="4x3" className="mb-3">
               <img 

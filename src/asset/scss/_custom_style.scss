@@ -1,3 +1,8 @@
+ul
+{
+  list-style: none;
+  padding: 0;
+}
 .custom_shadow
 {
   position: relative;
@@ -18,12 +23,20 @@
   &::before
   {
     left: 1%;
-    transform: skewY(-6deg);
+    transform: skewY(-10deg);
   }
-
   &::after
   {
     right: 1%;
+    transform: skewY(10deg);
+  }
+
+  &.activity::before
+  {
+    transform: skewY(-6deg);
+  }
+  &.activity::after
+  {
     transform: skewY(6deg);
   }
 }
@@ -39,4 +52,42 @@
 .fill-primary path
 {
   fill: $primary;
+}
+.prev,
+.next
+{
+  background: $light;
+  border: 0;
+  
+  &-icon
+  {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transition: .15s ease-in-out;
+  }
+  .prev-icon
+  {
+    border-width: 4px 6px 4px 0;
+    border-color: transparent $dark transparent transparent;
+  }
+  .next-icon
+  {
+    border-width: 4px 0 4px 6px;
+    border-color: transparent transparent transparent $dark;
+  }
+
+  &:hover
+  {
+    background: $dark;
+    
+    .prev-icon
+    {
+      border-color: transparent $light transparent transparent;
+    }
+    .next-icon
+    {
+      border-color: transparent transparent transparent $light;
+    }
+  }
 }

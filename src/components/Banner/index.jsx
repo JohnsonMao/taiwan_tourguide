@@ -6,7 +6,7 @@ import { ReactComponent as GPS } from '../../asset/icon/GPS.svg';
 import './static/_banner.scss';
 
 export default function Banner(props) {
-  const { img } = props;
+  const { img, type } = props;
   return (
     <Card className="custom_banner custom_shadow p-5">
       <div>

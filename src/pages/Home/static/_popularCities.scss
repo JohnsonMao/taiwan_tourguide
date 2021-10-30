@@ -1,10 +1,24 @@
+@import '../../../asset/scss/custom_variables';
+
 .popularCities
 {
-  max-height: 400px;
-  overflow: hidden;
-  
+  ul
+  {
+    max-height: 400px;
+    overflow: hidden;
+  }
+
   img
   {
     filter: brightness(80%);
+  }
+
+  .prev
+  {
+    right: 95%;
+  }
+  .next
+  {
+    left: 95%;
   }
 }
