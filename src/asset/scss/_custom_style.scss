@@ -3,6 +3,27 @@ ul
   list-style: none;
   padding: 0;
 }
+.option
+{
+  background: $light;
+}
+.select
+{
+  cursor: pointer;
+  ul
+  {
+    display: none;
+  }
+  &.active
+  {
+    ul
+    {
+      display: flex;
+      max-height: 320px;
+      overflow: auto;
+    }
+  }
+}
 .custom_shadow
 {
   position: relative;

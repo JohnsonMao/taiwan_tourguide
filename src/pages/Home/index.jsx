@@ -74,11 +74,11 @@ export default function Home(props) {
   const type = [
     {
       type: "景點",
-      value: "ScenicSpot"
+      path: "/scenicspot"
     },
     {
       type: "活動",
-      value: "Activity"
+      path: "/activity"
     }
   ]
   return (
