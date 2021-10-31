@@ -6,7 +6,7 @@ import { ReactComponent as GPS } from '../../asset/icon/GPS.svg';
 import './static/_banner.scss';
 
 export default function Banner(props) {
-  const { img, type } = props;
+  const { img, type, cities } = props;
   return (
     <Card className="custom_banner custom_shadow p-5">
       <div>
@@ -36,17 +36,21 @@ export default function Banner(props) {
                 <Col>
                   <Form.Select aria-label="選擇類別" className="h-100">
                     <option>類別</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    {
+                      type.map( item => (
+                        <option key={item.value} value={item.value}>{item.type}</option>
+                      ))
+                    }
                   </Form.Select>
                 </Col>
                 <Col>
                   <Form.Select aria-label="選擇縣市" className="h-100">
-                    <option>不分縣市</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="all">不分縣市</option>
+                    {
+                      cities.map( item => (
+                        <option key={item.City} value={item.City}>{item.CityName}</option>
+                      ))
+                    }
                   </Form.Select>
                 </Col>
                 <Col xs="auto">

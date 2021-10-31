@@ -11,7 +11,9 @@ export const apiCity = () => ajax(BASIC_URL + '/City');
 export const apiActivity = (City) => ajax(TOURISM_URL + '/Activity/' + City);
 /* 餐飲 API */
 export const apiRestaurant = (City) => ajax(TOURISM_URL + '/Restaurant/' + City);
-/* 景點 API */
+/* 景點 API 
+  Name,Description,Phone,Address,OpenTime,Picture,TicketInfo 
+  $filter=contains(Name%2C'過濾')*/
 export const apiScenicSpot = (City) => ajax(TOURISM_URL + '/ScenicSpot/' + City);
 /* 住宿 API */
 export const apiHotel = (City) => ajax(TOURISM_URL + '/Hotel/' + City);

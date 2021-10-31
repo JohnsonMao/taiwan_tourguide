@@ -6,7 +6,7 @@ import ActivityList from "../../components/ActivityList";
 import CardList from "../../components/CardList";
 import { ReactComponent as Triangle } from "../../asset/icon/triangle.svg";
 import { ReactComponent as MapM } from "../../asset/icon/map_M.svg";
-import { apiCity, apiActivity, apiRestaurant } from '../../api/index';
+import { apiActivity, apiRestaurant } from '../../api/index';
 import './static/_popularCities.scss';
 
 function Location() {
@@ -39,7 +39,7 @@ function Location() {
         >
           {
             popularCities.map((item, index) => (
-              <Col as="li">
+              <Col key={index} as="li">
                 <Card className={`shadow ${index % 3 === 0 ? 'p-3' : 'p-2'}`}>
                   <Ratio aspectRatio={index % 3 === 0 ? '3x4' : '5x3'}>
                     <img src={require("./static/banner.png").default} alt="city" />
@@ -48,7 +48,7 @@ function Location() {
                     className="d-flex flex-column align-items-center justify-content-center"
                   >
                     <MapM className="mb-2"/>
-                    <Card.Title className="text-light fs-2">{item.city}</Card.Title>
+                    <Card.Title className="text-light fs-2" as="h3">{item.city}</Card.Title>
                   </Card.ImgOverlay>
                 </Card>
               </Col>
@@ -68,10 +68,22 @@ function Location() {
   );
 }
 
-export default function Home() {
+export default function Home(props) {
+  const { cities } = props;
+
+  const type = [
+    {
+      type: "景點",
+      value: "ScenicSpot"
+    },
+    {
+      type: "活動",
+      value: "Activity"
+    }
+  ]
   return (
     <>
-      <Banner img="Home/static/banner.png" type={["景點", "活動"]} />
+      <Banner cities={cities} img="Home/static/banner.png" type={type} />
       <Location />
       <Container>
         <ActivityList />
