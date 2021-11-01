@@ -9,37 +9,46 @@ import './static/_banner.scss';
 export default function Banner(props) {
   const { img, type, cities } = props;
 
-  const [ typeIndex, setTypeIndex] = useState("-1");
+  const [ typeSelect, setTypeSelect] = useState({type: "-1", show: false});
+  const [ citySelect, setCitySelect] = useState({city: "", show: false});
+
+  const SELECT_TYPE = "select_type";
+  const SELECT_CITY = "select_city";
+  const SELECT_TYPE_INDEX = "select_type_index";
+  const SELECT_CITY_INDEX = "select_city_index";
 
   const handleType = (e) => {
-    const { classList } = e.currentTarget;
-    console.log(e.target.dataset.node)
-    console.log(e.target)
-    switch(e.target.dataset.node){
-      case "select_focus":
-        classList.add('active');
+    const { node, type, city } = e.target.dataset;
+    
+    console.log(node);
+    switch(node){
+      case SELECT_TYPE:
+        setTypeSelect(typeSelect => ({...typeSelect, show: true}));
         break;
-      case "select_link":
-        classList.remove('active');
-        setTypeIndex(e.target.dataset.type);
+      case SELECT_CITY:
+        setTypeSelect(typeSelect => ({...typeSelect, show: false}));
+        setCitySelect(CitySelect => ({...CitySelect, show: true}));
         break;
-      case "select_option":
-        classList.remove('active');
+      case SELECT_TYPE_INDEX:
+        setTypeSelect({type, show: false});
+        break;
+      case SELECT_CITY_INDEX:
+        setCitySelect({city, show: false});
         break;
       default:
-        classList.remove('active');
+        setTypeSelect(typeSelect => ({...typeSelect, show: false}));
+        setCitySelect(citySelect => ({...citySelect, show: false}));
     }
   }
 
   const configLink = {
-    "data-node": "select_link",
+    "data-node": SELECT_TYPE_INDEX,
     className: "d-block text-dark px-3 py-2",
-    replace: true,
-    onBlur: console.log("a")
+    replace: true
   }
 
   return (
-    <Card className="custom_banner custom_shadow p-5">
+    <Card className="custom_banner custom_shadow p-5" onClick={handleType}>
       <div>
         <img src={require(`../../pages/${img}`).default} alt="banner"/>
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">
@@ -65,23 +74,25 @@ export default function Banner(props) {
             <Form>
               <Row className="gx-2">
                 <Col>
-                  <div className="position-relative h-100 select" tabIndex="0"
-                    onClick={handleType}>
+                  <div className={`position-relative h-100 select 
+                    ${typeSelect.show ? 'active' : null}`} tabIndex="0">
                     <div className="form-control h-100" aria-label="選擇類別"
-                      data-node="select_focus">{
-                      typeIndex === "-1" ? "類別" : type[typeIndex].type
+                      data-node={SELECT_TYPE}>{
+                      typeSelect.type === "-1" ? "類別" : type[typeSelect.type].type
                     }</div>
                     <ul className="position-absolute top-0 start-0 flex-column
                                   w-100 rounded"
                     >
                       <li className="option">
-                        <Link to='/' data-type={typeIndex} {...configLink}>
-                          {typeIndex === "-1" ? '類別' : type[typeIndex].type}
+                        <Link to={
+                          typeSelect.type === "-1" ? '/' : type[typeSelect.type].path
+                        } data-type={typeSelect.type} {...configLink}>
+                          {typeSelect.type === "-1" ? '類別' : type[typeSelect.type].type}
                         </Link>
                       </li>
                       {
                         type.map((item, index) => (
-                          +typeIndex === index ? (
+                          +typeSelect.type === index ? (
                             <li key='-1' className="option">
                               <Link to='/' data-type="-1" {...configLink}>
                                 類別
@@ -100,23 +111,23 @@ export default function Banner(props) {
                   </div>
                 </Col>
                 <Col>
-                  <div className="position-relative h-100 select" tabIndex="0"
-                    onClick={handleType}>
+                <div className={`position-relative h-100 select 
+                    ${citySelect.show ? 'active' : null}`} tabIndex="0">
                     <div className="form-control h-100" aria-label="選擇縣市"
-                      data-node="select_focus">{
+                      data-node={SELECT_CITY}>{
                       "不分縣市"
                     }</div>
                     <ul className="position-absolute top-0 start-0 flex-column
                                   w-100 rounded"
                     >
                       <li className="option px-3 py-2" 
-                        data-city="-1" data-node="select_option" >
+                        data-city="" data-node={SELECT_CITY_INDEX}>
                         不分縣市
                       </li>
                       {
-                        cities.map((item, index) => (
-                          <li key={item.City} data-city={index} data-node="select_option" 
-                            className="option px-3 py-2">
+                        cities.map( item => (
+                          <li key={item.City} data-city={item.City} 
+                            data-node={SELECT_CITY_INDEX} className="option px-3 py-2">
                             {item.CityName}
                           </li>
                         ))

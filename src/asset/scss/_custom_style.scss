@@ -3,6 +3,10 @@ ul
   list-style: none;
   padding: 0;
 }
+.form-control:focus
+{
+  box-shadow: none;
+}
 .option
 {
   background: $light;
