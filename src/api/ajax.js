@@ -1,15 +1,16 @@
 import axios from 'axios';
+import getAuthorizationHeader from './hmac';
 
-export default function ajax(url, data = {}, type = 'GET') {
-  if (type === 'GET') {
-    let paramStr ='';
-    Object.keys(data).forEach( key => {
-      paramStr += key + '=' + data[key].toString() + '&'
-    })
-    paramStr += '$format=JSON'
+export default function ajax(url, data = {}) {
+  let paramStr ='';
+  Object.keys(data).forEach( key => {
+    paramStr += key + '=' + data[key].toString() + '&'
+  })
+  paramStr += '$format=JSON'
 
-    return axios.get(url + '?' + paramStr);
-  } else {
-    return axios.post(url, data);
-  }
+  return axios.get(
+    url + '?' + paramStr,
+    {
+      headers: getAuthorizationHeader()
+    });
 }

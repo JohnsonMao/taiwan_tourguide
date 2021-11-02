@@ -28,8 +28,7 @@ function Location() {
   ]
 
   return (
-    <div className="popularCities position-relative">
-      <Container as="section">
+      <section className="popularCities position-relative">
         <h4 className="fw-normal fs-2 mb-3">
           <Triangle className="me-4" />
           熱門城市
@@ -55,7 +54,6 @@ function Location() {
             ))
           }
         </Row>
-      </Container>
       <Button className="p-3 lh-1 position-absolute top-50 translate-middle-y shadow prev"
       >
         <span className="prev-icon d-block"></span>
@@ -64,7 +62,7 @@ function Location() {
       >
         <span className="next-icon d-block"></span>
       </Button>
-    </div>
+    </section>
   );
 }
 
@@ -84,8 +82,8 @@ export default function Home(props) {
   return (
     <>
       <Banner cities={cities} img="Home/static/banner.png" type={type} />
-      <Location />
       <Container>
+        <Location />
         <ActivityList />
         <CardList icon="square" title="熱門餐飲" />
       </Container>
