@@ -1,13 +1,14 @@
 import env from 'react-dotenv';
+import jsSHA from "jssha/dist/sha1";
 
 export default function getAuthorizationHeader() {
-    let AppID = env.DB_HOST;
-    let AppKey = env.DB_HOST;
-
+    let AppID = env.APP_ID;
+    let AppKey = env.APP_KEY;
     let GMTString = new Date().toGMTString();
     
-    let ShaObj = new jsSHA('SHA-1', 'TEXT');
-    ShaObj.setHMACKey(AppKey, 'TEXT');
+    let ShaObj = new jsSHA('SHA-1', 'TEXT', {
+        hmacKey: { value: AppKey, format: "TEXT" },
+    });
     ShaObj.update('x-date: ' + GMTString);
     let HMAC = ShaObj.getHMAC('B64');
     let Authorization = 'hmac username=\"' + AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';

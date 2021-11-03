@@ -1,5 +1,5 @@
 import axios from 'axios';
-import getAuthorizationHeader from './hmac';
+import getAuthorizationHeader from './getAuthorizationHeader';
 
 export default function ajax(url, data = {}) {
   let paramStr ='';
