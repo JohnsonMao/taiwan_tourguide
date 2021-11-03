@@ -3,6 +3,11 @@ ul
   list-style: none;
   padding: 0;
 }
+img
+{
+  display: block;
+  object-fit: cover;
+}
 .form-control:focus
 {
   box-shadow: none;
@@ -26,6 +31,11 @@ ul
       max-height: 320px;
       overflow: auto;
     }
+  }
+  li:hover
+  {
+    background: $primary;
+    color: $light;
   }
 }
 .custom_shadow

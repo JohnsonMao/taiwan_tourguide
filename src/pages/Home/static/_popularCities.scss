@@ -2,10 +2,13 @@
 
 .popularCities
 {
+  .section
+  {
+    overflow: hidden;
+  }
   ul
   {
-    max-height: 400px;
-    overflow: hidden;
+    max-height: 380px;
   }
 
   h3
