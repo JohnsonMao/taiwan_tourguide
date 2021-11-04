@@ -13,10 +13,13 @@ export default function Banner(props) {
   const SELECT_CITY = "select_city";
   const SELECT_TYPE_INDEX = "select_type_index";
   const SELECT_CITY_INDEX = "select_city_index";
+  const SEARCH = "search";
+  const SEARCH_BTN = "search_btn";
+  const TOGGLE_GPS = "toggle_GPS";
 
   const handleSelect = (e) => {
     const { node, city, cityname } = e.target.dataset;
-
+    console.log(node);
     switch (node) {
       case SELECT_TYPE:
         setSelect((state) => ({ ...state, cityShow: false, typeShow: true }));
@@ -30,6 +33,12 @@ export default function Banner(props) {
       case SELECT_CITY_INDEX:
         setSelect({ city, cityname, cityShow: false, typeShow: false });
         break;
+      case SEARCH:
+        break;
+      case SEARCH_BTN:
+        break;
+      case TOGGLE_GPS:
+        break;
       default:
         setSelect((state) => ({ ...state, cityShow: false, typeShow: false }));
     }
@@ -37,7 +46,7 @@ export default function Banner(props) {
 
   const configLink = {
     "data-node": SELECT_TYPE_INDEX,
-    className: "d-block text-dark px-3 py-2",
+    className: "d-block px-3 py-2",
     replace: true,
   };
 
@@ -59,13 +68,18 @@ export default function Banner(props) {
                 <Col>
                   <FormControl
                     className="h-100"
+                    data-node={SEARCH}
                     placeholder="搜尋關鍵字"
                     aria-label="搜尋關鍵字"
                   />
                 </Col>
                 <Col xs="auto">
-                  <Button className="lh-1 p-2" as="button">
-                    <Search />
+                  <Button
+                    className="lh-1 p-2"
+                    as="button"
+                    data-node={SEARCH_BTN}
+                  >
+                    <Search data-node={SEARCH_BTN} />
                   </Button>
                 </Col>
               </Row>
@@ -86,24 +100,23 @@ export default function Banner(props) {
                     >
                       {pathname === "/"
                         ? "類別"
-                        : type[type.findIndex(obj=>obj.path===pathname)].type}
+                        : type[type.findIndex((obj) => obj.path === pathname)]
+                            .type}
                     </div>
                     <ul className="position-absolute top-0 start-0 flex-column w-100 rounded">
                       <li className="option">
                         <Link
-                          to={
-                            pathname === "/"
-                              ? "/"
-                              : pathname
-                          }
+                          to={pathname === "/" ? "/" : pathname}
                           {...configLink}
                         >
                           {pathname === "/"
                             ? "類別"
-                            : type[type.findIndex(obj=>obj.path===pathname)].type}
+                            : type[
+                                type.findIndex((obj) => obj.path === pathname)
+                              ].type}
                         </Link>
                       </li>
-                      {type.map( item =>
+                      {type.map((item) =>
                         item.path === pathname ? (
                           <li key="/" className="option">
                             <Link to="/" {...configLink}>
@@ -112,10 +125,7 @@ export default function Banner(props) {
                           </li>
                         ) : (
                           <li key={item.path} className="option order-1">
-                            <Link
-                              to={item.path}
-                              {...configLink}
-                            >
+                            <Link to={item.path} {...configLink}>
                               {item.type}
                             </Link>
                           </li>
@@ -138,13 +148,13 @@ export default function Banner(props) {
                     >
                       {select.city === "" ? "不分縣市" : select.cityname}
                     </div>
-                    <ul
-                      className="position-absolute top-0 start-0 flex-column w-100 rounded"
-                    >
+                    <ul className="position-absolute top-0 start-0 flex-column w-100 rounded">
                       <li
                         className="option px-3 py-2"
                         data-city={select.city === "" ? "" : select.city}
-                        data-cityname={select.city === "" ? "" : select.cityname}
+                        data-cityname={
+                          select.city === "" ? "" : select.cityname
+                        }
                         data-node={SELECT_CITY_INDEX}
                       >
                         {select.city === "" ? "不分縣市" : select.cityname}
@@ -176,8 +186,13 @@ export default function Banner(props) {
                   </div>
                 </Col>
                 <Col xs="auto">
-                  <Button variant="secondary" className="lh-1 p-2" as="button">
-                    <GPS />
+                  <Button
+                    variant="secondary"
+                    className="lh-1 p-2"
+                    as="button"
+                    data-node={TOGGLE_GPS}
+                  >
+                    <GPS data-node={TOGGLE_GPS} />
                   </Button>
                 </Col>
               </Row>

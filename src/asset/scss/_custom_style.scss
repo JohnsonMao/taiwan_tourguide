@@ -12,10 +12,6 @@ img
 {
   box-shadow: none;
 }
-.option
-{
-  background: $light;
-}
 .select
 {
   cursor: pointer;
@@ -32,10 +28,67 @@ img
       overflow: auto;
     }
   }
-  li:hover
+  .option
   {
-    background: $primary;
-    color: $light;
+    background: $light;
+    color: $dark;
+    &:hover
+    {
+      background: $primary;
+      color: $light;
+    }
+  }
+}
+.swiper
+{
+  &-slide
+  {
+    height: max-content;
+  }
+  &-button
+  {
+    &-prev,
+    &-next
+    {
+      background: $light no-repeat center;
+      height: 32px;
+      width: 32px;
+      border-radius: 3px;
+      border: 0;
+      box-shadow: 0 0.25rem 0.25rem $shadow;
+
+      &:hover
+      {
+        background: $dark no-repeat center;
+        color: $light;
+      }
+      &::after
+      {
+        display: none
+      }
+    }
+    &-prev
+    {
+      background-image: url('../icon/prev.svg');
+      left: -5%;
+      &:hover
+      {
+        background-image: url('../icon/prev-white.svg');
+      }
+    }
+    &-next
+    {
+      background-image: url('../icon/next.svg');
+      right: -5%;
+      &:hover
+      {
+        background-image: url('../icon/next-white.svg');
+      }
+    }
+    &-disabled
+    {
+      opacity: 0 !important;
+    }
   }
 }
 .custom_shadow
@@ -87,42 +140,4 @@ img
 .fill-primary path
 {
   fill: $primary;
-}
-.prev,
-.next
-{
-  background: $light;
-  border: 0;
-  
-  &-icon
-  {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    transition: .15s ease-in-out;
-  }
-  .prev-icon
-  {
-    border-width: 4px 6px 4px 0;
-    border-color: transparent $dark transparent transparent;
-  }
-  .next-icon
-  {
-    border-width: 4px 0 4px 6px;
-    border-color: transparent transparent transparent $dark;
-  }
-
-  &:hover
-  {
-    background: $dark;
-    
-    .prev-icon
-    {
-      border-color: transparent $light transparent transparent;
-    }
-    .next-icon
-    {
-      border-color: transparent transparent transparent $light;
-    }
-  }
 }

@@ -2,15 +2,6 @@
 
 .popularCities
 {
-  .section
-  {
-    overflow: hidden;
-  }
-  ul
-  {
-    max-height: 380px;
-  }
-
   h3
   {
     margin-right: -1rem;
@@ -20,14 +11,5 @@
   img
   {
     filter: brightness(80%);
-  }
-
-  .prev
-  {
-    left: -5%;
-  }
-  .next
-  {
-    right: -5%;
   }
 }
