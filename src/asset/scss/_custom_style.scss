@@ -28,7 +28,8 @@ img
       overflow: auto;
     }
   }
-  .option
+  .option,
+  .option a
   {
     background: $light;
     color: $dark;
