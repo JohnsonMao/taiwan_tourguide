@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HeaderNavbar from "./components/HeaderNavbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Activity from "./pages/Activity";
 import {
   apiCity,
   apiActivity,
@@ -26,9 +25,9 @@ export default function App() {
     apiActivity().then((res) => {
       setActivity(res.data);
     });
-    // apiScenicSpot().then((res) => {
-    //   setScenicSpot(res.data);
-    // });
+    apiScenicSpot().then((res) => {
+      setScenicSpot(res.data);
+    });
     apiRestaurant().then((res) => {
       setRestaurant(res.data);
     });
@@ -40,7 +39,12 @@ export default function App() {
         <Route
           path="/"
           component={() => (
-            <Home cities={cities} activity={activity} restaurant={restaurant} />
+            <Home
+              cities={cities}
+              activity={activity}
+              restaurant={restaurant}
+              scenicSpot={scenicSpot}
+            />
           )}
         />
       </Switch>

@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function Activity() {
+import ActivityList from "../../components/ActivityList";
+
+export default function Activity(props) {
+  const { activity } = props;
   return (
-    <div>
-      1
-    </div>
+    <ActivityList activity={activity} />
   )
 }

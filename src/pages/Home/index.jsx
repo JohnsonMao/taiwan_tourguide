@@ -6,11 +6,23 @@ import Banner from "../../components/Banner";
 import CityList from "../../components/CityList";
 import ActivityList from "../../components/ActivityList";
 import CardList from "../../components/CardList";
+import Activity from "../../pages/Activity";
+import ScenicSpot from "../../pages/ScenicSpot";
 
+function Index(props) {
+  const { activity, restaurant } = props;
+  return (
+    <>
+      <CityList />
+      <ActivityList activity={activity} />
+      <CardList icon="square" title="熱門餐飲" data={restaurant} />
+    </>
+  );
+}
 
 export default function Home(props) {
-  const { cities, activity, restaurant } = props;
-  const activityHome = activity.slice(0, 4)
+  const { cities, activity, restaurant, scenicSpot } = props;
+  const activityHome = activity.slice(0, 4);
   const restaurantHome = restaurant.slice(0, 10);
   const location = useLocation();
 
@@ -33,14 +45,28 @@ export default function Home(props) {
         img="Home/static/banner.png"
         type={type}
       />
-      
+
       <Container>
         <Switch>
-          <Route />
+          <Route
+            path="/activity"
+            component={() => (
+              <Activity activity={activity} />
+            )}
+          />
+          <Route
+            path="/scenicspot"
+            component={() => (
+              <ScenicSpot scenicSpot={scenicSpot} />
+            )}
+          />
+          <Route
+            path="/"
+            component={() => (
+              <Index activity={activityHome} restaurant={restaurantHome} />
+            )}
+          />
         </Switch>
-        <CityList />
-        <ActivityList activity={activityHome}/>
-        <CardList icon="square" title="熱門餐飲" data={restaurantHome} />
       </Container>
     </>
   );

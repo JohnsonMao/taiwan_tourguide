@@ -27,7 +27,7 @@ export default function ActivityList(props) {
         {
           activity.map((item, index) => (
             <Col key={index} as="li">
-              <Card className="custom_shadow activity p-3 pe-6">
+              <Card className="custom_shadow activity p-4 pe-6">
                 <Row className="gx-4">
                   <Col>
                     <Ratio aspectRatio="1x1">
