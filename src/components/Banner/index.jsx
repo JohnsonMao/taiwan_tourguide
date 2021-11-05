@@ -7,31 +7,32 @@ import { ReactComponent as GPS } from "../../asset/icon/GPS.svg";
 import "./static/_banner.scss";
 
 export default function Banner(props) {
-  const { img, type, pathname, cities, select, setSelect } = props;
+  const { img, type, location, cities } = props;
+  const { pathname, search } = location;
+  /* Get city from parameter */
+  const param_city = search.replace(/\?city=/, "");
+  /* Select UI State */
+  const [select, setSelect] = useState({
+    cityShow: false,
+    typeShow: false,
+  });
 
+  /* Select action type */
   const SELECT_TYPE = "select_type";
   const SELECT_CITY = "select_city";
-  const SELECT_TYPE_INDEX = "select_type_index";
-  const SELECT_CITY_INDEX = "select_city_index";
   const SEARCH = "search";
   const SEARCH_BTN = "search_btn";
   const TOGGLE_GPS = "toggle_GPS";
 
+  /* Control Select onClick */
   const handleSelect = (e) => {
-    const { node, city, cityname } = e.target.dataset;
-    console.log(node);
+    const { node } = e.target.dataset;
     switch (node) {
       case SELECT_TYPE:
-        setSelect((state) => ({ ...state, cityShow: false, typeShow: true }));
+        setSelect({ cityShow: false, typeShow: true });
         break;
       case SELECT_CITY:
-        setSelect((state) => ({ ...state, cityShow: true, typeShow: false }));
-        break;
-      case SELECT_TYPE_INDEX:
-        setSelect((state) => ({ ...state, cityShow: false, typeShow: false }));
-        break;
-      case SELECT_CITY_INDEX:
-        setSelect({ city, cityname, cityShow: false, typeShow: false });
+        setSelect({ cityShow: true, typeShow: false });
         break;
       case SEARCH:
         break;
@@ -40,15 +41,26 @@ export default function Banner(props) {
       case TOGGLE_GPS:
         break;
       default:
-        setSelect((state) => ({ ...state, cityShow: false, typeShow: false }));
+        if (select.cityShow || select.typeShow) {
+          setSelect({ cityShow: false, typeShow: false });
+        }
     }
   };
 
   const configLink = {
-    "data-node": SELECT_TYPE_INDEX,
     className: "d-block px-3 py-2",
     replace: true,
   };
+
+  /* Select City */
+  const { CityName } = cities[
+    cities.findIndex((obj) => obj.City === param_city)
+  ] || { CityName: "不分縣市" };
+
+  /* Select type */
+  const { type: typeValue } = type[
+    type.findIndex((obj) => obj.path === pathname)
+  ] || { type: "類別" };
 
   return (
     <Card className="custom_banner custom_shadow p-5" onClick={handleSelect}>
@@ -98,34 +110,24 @@ export default function Banner(props) {
                       aria-label="選擇類別"
                       data-node={SELECT_TYPE}
                     >
-                      {pathname === "/"
-                        ? "類別"
-                        : type[type.findIndex((obj) => obj.path === pathname)]
-                            .type}
+                      {typeValue}
                     </div>
                     <ul className="position-absolute top-0 start-0 flex-column w-100 rounded">
                       <li className="option">
-                        <Link
-                          to={pathname === "/" ? "/" : pathname}
-                          {...configLink}
-                        >
-                          {pathname === "/"
-                            ? "類別"
-                            : type[
-                                type.findIndex((obj) => obj.path === pathname)
-                              ].type}
+                        <Link to={pathname + search} {...configLink}>
+                          {typeValue}
                         </Link>
                       </li>
                       {type.map((item) =>
                         item.path === pathname ? (
                           <li key="/" className="option">
-                            <Link to="/" {...configLink}>
+                            <Link to={`/`} {...configLink}>
                               類別
                             </Link>
                           </li>
                         ) : (
                           <li key={item.path} className="option order-1">
-                            <Link to={item.path} {...configLink}>
+                            <Link to={item.path + search} {...configLink}>
                               {item.type}
                             </Link>
                           </li>
@@ -146,39 +148,29 @@ export default function Banner(props) {
                       aria-label="選擇縣市"
                       data-node={SELECT_CITY}
                     >
-                      {select.city === "" ? "不分縣市" : select.cityname}
+                      {CityName}
                     </div>
                     <ul className="position-absolute top-0 start-0 flex-column w-100 rounded">
-                      <li
-                        className="option px-3 py-2"
-                        data-city={select.city === "" ? "" : select.city}
-                        data-cityname={
-                          select.city === "" ? "" : select.cityname
-                        }
-                        data-node={SELECT_CITY_INDEX}
-                      >
-                        {select.city === "" ? "不分縣市" : select.cityname}
+                      <li className="option">
+                        <Link to={pathname + search} {...configLink}>
+                          {CityName}
+                        </Link>
                       </li>
                       {cities.map((item) =>
-                        item.City === select.city ? (
-                          <li
-                            key="all"
-                            className="option px-3 py-2"
-                            data-city=""
-                            data-cityname=""
-                            data-node={SELECT_CITY_INDEX}
-                          >
-                            不分縣市
+                        item.City === param_city ? (
+                          <li key="all" className="option">
+                            <Link to={pathname} {...configLink}>
+                              不分縣市
+                            </Link>
                           </li>
                         ) : (
-                          <li
-                            key={item.City}
-                            data-city={item.City}
-                            data-cityname={item.CityName}
-                            data-node={SELECT_CITY_INDEX}
-                            className="option order-1 px-3 py-2"
-                          >
-                            {item.CityName}
+                          <li key={item.City} className="option order-1">
+                            <Link
+                              to={pathname + "?city=" + item.City}
+                              {...configLink}
+                            >
+                              {item.CityName}
+                            </Link>
                           </li>
                         )
                       )}
