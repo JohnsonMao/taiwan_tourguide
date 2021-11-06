@@ -35,7 +35,7 @@ export default function App() {
   }, []);
   return (
     <BrowserRouter>
-      <HeaderNavbar />
+      <HeaderNavbar/>
       <Switch>
         <Route
           path="/"

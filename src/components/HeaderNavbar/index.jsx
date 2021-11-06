@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
@@ -8,10 +8,19 @@ import { ReactComponent as Square } from './static/square.svg';
 import { ReactComponent as Circle } from './static/circle.svg';
 
 export default function HeaderNavbar() {
+  const [isTop, setIsTop] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const isTop = window.pageYOffset < 100;
+      setIsTop(isTop);
+    });
+  }, [])
+
   return (
     <Navbar className="p-0" sticky="top" bg="light">
-      <Container className="align-items-end">
-        <Navbar.Brand as="h1" className="m-0 py-5">
+      <Container className={`align-items-end ${isTop ? 'isTop' : null}`}>
+        <Navbar.Brand as="h1" className="m-0">
           <Link to="#" className="logo">Taiwan° Tourguide</Link>
         </Navbar.Brand>
         <Nav as="ul" className="custom_nav">

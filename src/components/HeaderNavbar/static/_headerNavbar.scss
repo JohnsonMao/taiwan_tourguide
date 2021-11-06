@@ -9,6 +9,8 @@
   text-indent: 101%;
   white-space: none;
   overflow: hidden;
+  transform: scale(.8);
+  transition: .3s linear;
 }
 .custom_nav
 {
@@ -34,5 +36,17 @@
   {
     color: $info;
     border-bottom: 1px solid $info;
+  }
+}
+.container
+{
+  transition: .3s linear;
+}
+.isTop
+{
+  padding: 18px 0;
+  .logo
+  {
+    transform: scale(1);
   }
 }
