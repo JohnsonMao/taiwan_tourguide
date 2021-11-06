@@ -103,8 +103,8 @@ export default function CityList() {
   const CitySwiperSlide = popularCities.map((item, index) => (
     <SwiperSlide key={index} tag="li">
       <Link to={`/scenicspot?city=${item.city}`}>
-        <Card className={`shadow ${index % 3 === 0 ? "p-3 mt-2" : "p-2"}`}>
-          <Ratio aspectRatio={index % 3 === 0 ? "3x4" : "5x3"}>
+        <Card className={`shadow ${index % 3 === 0 ? "p-3 mt-fix me-1" : "p-2 me-1"}`}>
+          <Ratio aspectRatio={index % 3 === 0 ? "3x4" : "15x9"}>
             <img src={item.img} alt={item.cityName} />
           </Ratio>
           <Card.ImgOverlay className="d-flex flex-column align-items-center justify-content-center">
@@ -120,7 +120,7 @@ export default function CityList() {
 
   /* `$Swiper` */
   const swiperConfig = {
-    spaceBetween: 8,
+    spaceBetween: 6,
     breakpoints: {
       420: {
         slidesPerView: 2,
@@ -141,7 +141,8 @@ export default function CityList() {
       swiper.params.navigation.nextEl = nextRef.current;
       swiper.navigation.init();
       swiper.navigation.update();
-    }
+    },
+    className: "ps-1"
   };
   return (
     <section className="cityList position-relative">

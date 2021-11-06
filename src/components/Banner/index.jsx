@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Card, Form, FormControl, Button, Row, Col } from "react-bootstrap";
 
+import { paramCityFunc, cityNameFunc, typeValueFunc } from '../../utils/select';
 import { ReactComponent as Search } from "../../asset/icon/search.svg";
 import { ReactComponent as GPS } from "../../asset/icon/GPS.svg";
 import "./static/_banner.scss";
 
 export default function Banner(props) {
-  const { img, type, location, cities } = props;
-  const { pathname, search } = location;
+  const { img, type, cities } = props;
+  const { pathname, search } = useLocation();
   /* Get city from parameter */
-  const param_city = search.replace(/\?city=/, "");
+  const param_city = paramCityFunc(search);
+  /* Select Func */
+  const cityName = cityNameFunc(cities, param_city);
+  const typeValue = typeValueFunc(type, pathname);
+
   /* Select UI State */
   const [select, setSelect] = useState({
     cityShow: false,
@@ -20,6 +25,7 @@ export default function Banner(props) {
   /* Select action type */
   const SELECT_TYPE = "select_type";
   const SELECT_CITY = "select_city";
+  const SELECT_OPTION = "select_option";
   const SEARCH = "search";
   const SEARCH_BTN = "search_btn";
   const TOGGLE_GPS = "toggle_GPS";
@@ -34,11 +40,23 @@ export default function Banner(props) {
       case SELECT_CITY:
         setSelect({ cityShow: true, typeShow: false });
         break;
+      case SELECT_OPTION:
+        setSelect({ cityShow: false, typeShow: false });
+        break;
       case SEARCH:
+        if (select.cityShow || select.typeShow) {
+          setSelect({ cityShow: false, typeShow: false });
+        }
         break;
       case SEARCH_BTN:
+        if (select.cityShow || select.typeShow) {
+          setSelect({ cityShow: false, typeShow: false });
+        }
         break;
       case TOGGLE_GPS:
+        if (select.cityShow || select.typeShow) {
+          setSelect({ cityShow: false, typeShow: false });
+        }
         break;
       default:
         if (select.cityShow || select.typeShow) {
@@ -48,19 +66,10 @@ export default function Banner(props) {
   };
 
   const configLink = {
+    "data-node": SELECT_OPTION,
     className: "d-block px-3 py-2",
     replace: true,
   };
-
-  /* Select City */
-  const { CityName } = cities[
-    cities.findIndex((obj) => obj.City === param_city)
-  ] || { CityName: "不分縣市" };
-
-  /* Select type */
-  const { type: typeValue } = type[
-    type.findIndex((obj) => obj.path === pathname)
-  ] || { type: "類別" };
 
   return (
     <Card className="custom_banner custom_shadow p-5" onClick={handleSelect}>
@@ -148,12 +157,12 @@ export default function Banner(props) {
                       aria-label="選擇縣市"
                       data-node={SELECT_CITY}
                     >
-                      {CityName}
+                      {cityName}
                     </div>
                     <ul className="position-absolute top-0 start-0 flex-column w-100 rounded">
                       <li className="option">
                         <Link to={pathname + search} {...configLink}>
-                          {CityName}
+                          {cityName}
                         </Link>
                       </li>
                       {cities.map((item) =>

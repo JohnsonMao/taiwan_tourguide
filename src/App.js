@@ -17,7 +17,7 @@ export default function App() {
   const [activity, setActivity] = useState([]);
   const [scenicSpot, setScenicSpot] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
-
+  
   useEffect(() => {
     apiCity().then((res) => {
       setCities(res.data);
@@ -31,6 +31,7 @@ export default function App() {
     apiRestaurant().then((res) => {
       setRestaurant(res.data);
     });
+    console.log("Get Data")
   }, []);
   return (
     <BrowserRouter>

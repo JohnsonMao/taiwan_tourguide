@@ -8,14 +8,16 @@ import ActivityList from "../../components/ActivityList";
 import CardList from "../../components/CardList";
 import Activity from "../../pages/Activity";
 import ScenicSpot from "../../pages/ScenicSpot";
+import { paramCityFunc, cityNameFunc } from "../../utils/select";
+import { homeType } from "../../utils/typeConfig";
 
 function Index(props) {
-  const { activity, restaurant } = props;
+  const { activity, restaurant, city } = props;
   return (
     <>
       <CityList />
-      <ActivityList activity={activity} />
-      <CardList icon="square" title="熱門餐飲" data={restaurant} />
+      <ActivityList data={activity} />
+      <CardList icon="square" title="餐飲" city={city} data={restaurant} />
     </>
   );
 }
@@ -24,46 +26,33 @@ export default function Home(props) {
   const { cities, activity, restaurant, scenicSpot } = props;
   const activityHome = activity.slice(0, 4);
   const restaurantHome = restaurant.slice(0, 10);
-  const location = useLocation();
-
-  const type = [
-    {
-      type: "景點",
-      path: "/scenicspot",
-    },
-    {
-      type: "活動",
-      path: "/activity",
-    },
-  ];
-
+  const { search } = useLocation();
+  const param_city = paramCityFunc(search);
+  const cityName = cityNameFunc(cities, param_city);
   return (
     <>
-      <Banner
-        cities={cities}
-        location={location}
-        img="Home/static/banner.png"
-        type={type}
-      />
+      <Banner cities={cities} img="Home/static/banner.png" type={homeType} />
 
       <Container>
         <Switch>
           <Route
             path="/activity"
-            component={() => (
-              <Activity activity={activity} />
-            )}
+            component={() => <Activity city={cityName} activity={activity} />}
           />
           <Route
             path="/scenicspot"
             component={() => (
-              <ScenicSpot scenicSpot={scenicSpot} />
+              <ScenicSpot city={cityName} scenicSpot={scenicSpot} />
             )}
           />
           <Route
             path="/"
             component={() => (
-              <Index activity={activityHome} restaurant={restaurantHome} />
+              <Index
+                activity={activityHome}
+                city={cityName}
+                restaurant={restaurantHome}
+              />
             )}
           />
         </Switch>

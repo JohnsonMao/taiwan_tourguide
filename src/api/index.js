@@ -45,7 +45,7 @@ export const apiRestaurant = (City = "", data = initRestaurant) =>
   ajax(TOURISM_URL + "/Restaurant/" + City, data);
 /* 景點 API 
   Name,Description,Phone,Address,OpenTime,Picture,TicketInfo 
-  $filter=contains(Name%2C'過濾')*/
+  $filter=contains(Name,'過濾')*/
 export const apiScenicSpot = (City = "") =>
   ajax(TOURISM_URL + "/ScenicSpot/" + City);
 /* 住宿 API */

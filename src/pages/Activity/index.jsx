@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import ActivityList from "../../components/ActivityList";
+import Pagination from "../../components/Pagination";
 
 export default function Activity(props) {
-  const { activity } = props;
+  const { activity, city } = props;
   return (
-    <ActivityList activity={activity} />
-  )
+    <Pagination data={activity} city={city} component="ActivityList" />
+  );
 }

@@ -6,7 +6,7 @@ import { ReactComponent as Square } from "../../asset/icon/square.svg";
 import { ReactComponent as Map } from "../../asset/icon/map.svg";
 
 export default function CardList(props) {
-  const { icon, title, data } = props;
+  const { icon, title, data, city } = props;
   return (
     <section className="section">
       <h4 className="fw-normal fs-2 mb-3">
@@ -15,7 +15,7 @@ export default function CardList(props) {
         ) : (
           <Square className="me-4" />
         )}
-        {title}
+        {city === "不分縣市" ? '熱門' + title : city + title}
       </h4>
       <Row xs={2} sm={4} md={5} as="ul" className="gx-3 gy-6">
         {data.map((item, index) => (

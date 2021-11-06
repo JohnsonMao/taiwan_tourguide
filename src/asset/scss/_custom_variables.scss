@@ -74,7 +74,7 @@ $form-select-indicator:   url('data:image/svg+xml,<svg width="8" height="8" view
 $aspect-ratios: (
   "1x1": 100%,
   "4x3": calc(3 / 4 * 100%),
-  "5x3": calc(3 / 5 * 100%),
   "3x4": calc(4 / 3 * 100%),
+  "15x9": calc(9 / 15 * 100%),
   "15x4": calc(4 / 15 * 100%)
 );
