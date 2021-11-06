@@ -92,6 +92,24 @@ img
     }
   }
 }
+.pagination
+{
+  .swiper-button-prev,
+  .swiper-button-next
+  {
+    position: static;
+    background: $dark no-repeat center;
+    transform: translateY(16px);
+  }
+  .swiper-button-prev
+  { 
+    background-image: url('../icon/prev-white.svg');
+  }
+  .swiper-button-next
+  {
+    background-image: url('../icon/next-white.svg');
+  }
+}
 .custom_shadow
 {
   position: relative;

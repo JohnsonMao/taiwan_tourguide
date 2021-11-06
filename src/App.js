@@ -17,18 +17,18 @@ export default function App() {
   const [activity, setActivity] = useState([]);
   const [scenicSpot, setScenicSpot] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
-  
+
   useEffect(() => {
     apiCity().then((res) => {
       setCities(res.data);
     });
-    apiActivity().then((res) => {
+    apiActivity({$top:40}).then((res) => {
       setActivity(res.data);
     });
-    apiScenicSpot().then((res) => {
+    apiScenicSpot({$top:100}).then((res) => {
       setScenicSpot(res.data);
     });
-    apiRestaurant().then((res) => {
+    apiRestaurant({$top:100}).then((res) => {
       setRestaurant(res.data);
     });
     console.log("Get Data")

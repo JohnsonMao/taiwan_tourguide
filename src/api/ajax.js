@@ -6,7 +6,7 @@ export default function ajax(url, data = {}) {
   Object.keys(data).forEach( key => {
     paramStr += key + '=' + data[key].toString() + '&'
   })
-  paramStr += '$top=30&$format=JSON'
+  paramStr += '$format=JSON'
 
   return axios.get(
     url + '?' + paramStr,

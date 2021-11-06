@@ -20,13 +20,12 @@ const initActivity = {
     "StartTime",
     "EndTime",
   ],
-  $filter: [
-    "Picture/PictureUrl1 ne null"
-  ]
+  $filter: ["Picture/PictureUrl1 ne null"],
 };
 /* 活動 API */
-export const apiActivity = (City = "", data = initActivity) =>
-  ajax(TOURISM_URL + "/Activity/" + City, data);
+export const apiActivity = (data = null, City = "") =>
+  ajax(TOURISM_URL + "/Activity/" + City, { ...initActivity, ...data });
+
 /* 預設篩選餐廳資料 */
 const initRestaurant = {
   $select: [
@@ -37,19 +36,48 @@ const initRestaurant = {
     "Picture",
     "OpenTime",
     "WebsiteUrl",
-    "Class"
-  ]
+    "Class",
+  ],
 };
 /* 餐飲 API */
-export const apiRestaurant = (City = "", data = initRestaurant) =>
-  ajax(TOURISM_URL + "/Restaurant/" + City, data);
+export const apiRestaurant = (data = null, City = "") =>
+  ajax(TOURISM_URL + "/Restaurant/" + City, { ...initRestaurant, ...data });
+
+/* 預設篩選景點資料 */
+const initScenicSpot = {
+  $select: [
+    "Name",
+    "Description",
+    "Address",
+    "Phone",
+    "Picture",
+    "TicketInfo",
+    "OpenTime",
+  ],
+};
 /* 景點 API 
   Name,Description,Phone,Address,OpenTime,Picture,TicketInfo 
   $filter=contains(Name,'過濾')*/
-export const apiScenicSpot = (City = "") =>
-  ajax(TOURISM_URL + "/ScenicSpot/" + City);
+export const apiScenicSpot = (data = null, City = "") =>
+  ajax(TOURISM_URL + "/ScenicSpot/" + City, { ...initScenicSpot, ...data });
+
+/* 預設篩選住宿資料 */
+const initHotel = {
+  $select: [
+    "Name",
+    "Description",
+    "Grade",
+    "Address",
+    "Phone",
+    "Picture",
+    "Class",
+    "ServiceInfo",
+    "Spec",
+  ],
+};
 /* 住宿 API */
-export const apiHotel = (City = "") => ajax(TOURISM_URL + "/Hotel/" + City);
+export const apiHotel = (data = null, City = "") =>
+  ajax(TOURISM_URL + "/Hotel/" + City, { ...initHotel, ...data });
 
 /* 交通 API */
 /* 路線資料：RouteUID（路線識別代碼）、TaiwanTripName（台灣好行路線名稱）
