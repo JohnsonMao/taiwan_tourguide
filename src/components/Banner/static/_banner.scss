@@ -6,16 +6,13 @@
 
   & > div
   {
-    height: calc(100vh - 129px);
+    height: calc(95vh - 129px);
     overflow: hidden;
   }
   img
   {
-    position: relative;
-    top: -10%;
     min-width: 100vw;
-    min-height: 120vh;
-    object-fit: cover;
+    filter: brightness(80%);
   }
   form + form
   {
@@ -35,4 +32,50 @@
       transform: skewY(4deg);
     }
   }
+  i
+  {
+    display: inline-block;
+    text-indent: 101%;
+    white-space: none;
+    overflow: hidden;
+  }
+  span
+  {
+    position: relative;
+    &::before
+    {
+      content: '';
+      position: absolute;
+      left: 65px;
+      top: 14px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 8px 0 10px;
+      border-color: $primary transparent transparent transparent;
+      transform: rotate(-40deg);
+    }
+  }
+}
+.o
+{
+  margin-left: 4px;
+  width: 30px;
+  height: 30px;
+  border: 6px solid $primary;
+  transform: translateY(2px);
+
+  &_circle
+  {
+    margin-left: 0;
+    border-radius: 50%;
+  }
+}
+.i_triangle
+{
+  margin: 0 4px;
+  height: 29px;
+  width: 6px;
+  background: $primary;
+  transform: translateY(1px);
 }

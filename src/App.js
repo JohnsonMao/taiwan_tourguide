@@ -6,22 +6,20 @@ import HeaderNavbar from "./components/HeaderNavbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import {
-  apiCity,
   apiActivity,
   apiRestaurant,
   apiScenicSpot,
 } from "./api/index";
 
 export default function App() {
-  const [cities, setCities] = useState([]);
+  // const [cities, setCities] = useState([]);
   const [activity, setActivity] = useState([]);
   const [scenicSpot, setScenicSpot] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
-
   useEffect(() => {
-    apiCity().then((res) => {
-      setCities(res.data);
-    });
+    // apiCity().then((res) => {
+    //   setCities(res.data);
+    // });
     apiActivity({$top:40}).then((res) => {
       setActivity(res.data);
     });
@@ -41,7 +39,6 @@ export default function App() {
           path="/"
           component={() => (
             <Home
-              cities={cities}
               activity={activity}
               restaurant={restaurant}
               scenicSpot={scenicSpot}

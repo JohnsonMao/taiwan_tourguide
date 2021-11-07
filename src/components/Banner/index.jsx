@@ -3,13 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 import { Card, Form, FormControl, Button, Row, Col } from "react-bootstrap";
 
 import { paramCityFunc, cityNameFunc, typeValueFunc } from '../../utils/select';
+import { homeType, foodAndInnType, cities } from '../../utils/selectConfig';
 import { ReactComponent as Search } from "../../asset/icon/search.svg";
 import { ReactComponent as GPS } from "../../asset/icon/GPS.svg";
 import "./static/_banner.scss";
 
 export default function Banner(props) {
-  const { img, type, cities } = props;
+  const { img, typeStr } = props;
   const { pathname, search } = useLocation();
+  const type = typeStr === 'homeType' ? homeType : foodAndInnType;
   /* Get city from parameter */
   const param_city = paramCityFunc(search);
   /* Select Func */
@@ -74,12 +76,12 @@ export default function Banner(props) {
   return (
     <Card className="custom_banner custom_shadow p-5" onClick={handleSelect}>
       <div>
-        <img src={require(`../../pages/${img}`).default} alt="banner" />
+        <img src={img} alt="banner" />
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">
           <div>
-            <Card.Title as="h2" className="text-light fs-1 fw-bold">
-              Welcome to
-              <span className="text-primary"> Taiwan°</span>
+            <Card.Title as="h2" className="text-light fs-1 fw-bold text-shadow">
+              Welc<i className="o o_circle">o</i>me t<i className="o">o</i>
+              <span className="text-primary"> Ta<i className="i_triangle">i</i>wan</span>
             </Card.Title>
             <Card.Text className="text-light">
               台北、台中、台南、屏東、宜蘭……遊遍台灣

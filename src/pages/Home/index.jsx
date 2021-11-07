@@ -9,7 +9,7 @@ import CardList from "../../components/CardList";
 import Activity from "../../pages/Activity";
 import ScenicSpot from "../../pages/ScenicSpot";
 import { paramCityFunc, cityNameFunc } from "../../utils/select";
-import { homeType } from "../../utils/typeConfig";
+import { cities } from "../../utils/selectConfig";
 
 function Index(props) {
   const { activity, restaurant, city } = props;
@@ -23,7 +23,7 @@ function Index(props) {
 }
 
 export default function Home(props) {
-  const { cities, activity, restaurant, scenicSpot } = props;
+  const { activity, restaurant, scenicSpot } = props;
   const activityHome = activity.slice(0, 4);
   const restaurantHome = restaurant.slice(0, 10);
   const { search } = useLocation();
@@ -31,7 +31,10 @@ export default function Home(props) {
   const cityName = cityNameFunc(cities, param_city);
   return (
     <>
-      <Banner cities={cities} img="Home/static/banner.png" type={homeType} />
+      <Banner
+        img={`https://images.unsplash.com/photo-1552993873-0dd1110e025f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80`}
+        typeStr="homeType"
+      />
 
       <Container>
         <Switch>
