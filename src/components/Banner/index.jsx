@@ -80,8 +80,8 @@ export default function Banner(props) {
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">
           <div>
             <Card.Title as="h2" className="text-light fs-1 fw-bold text-shadow">
-              Welc<i className="o o_circle">o</i>me t<i className="o">o</i>
-              <span className="text-primary"> Ta<i className="i_triangle">i</i>wan</span>
+              Welc<i className="o o_circle shadow">o</i>me t<i className="o shadow">o</i>
+              <span className="text-primary"> Ta<i className="i_triangle shadow">i</i>wan</span>
             </Card.Title>
             <Card.Text className="text-light">
               台北、台中、台南、屏東、宜蘭……遊遍台灣

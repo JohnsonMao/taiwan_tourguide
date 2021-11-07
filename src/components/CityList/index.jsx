@@ -147,7 +147,7 @@ export default function CityList() {
   return (
     <section className="cityList position-relative">
       <h4 className="fw-normal fs-2 mb-1">
-        <Triangle className="me-4" />
+        <Triangle className="mb-1 me-4" />
         熱門城市
       </h4>
       <div className="section">

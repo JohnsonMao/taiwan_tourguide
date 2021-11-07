@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function Restaurant() {
+import Pagination from "../../components/Pagination";
+import useHttp from "../../utils/useHttp";
+
+export default function Restaurant(props) {
+  const { data, city } = props;
   return (
-    <div>
-      
-    </div>
-  )
+    <Pagination
+      data={data}
+      city={city}
+      title="熱門美食"
+      icon="square"
+      component="CardList"
+    />
+  );
 }

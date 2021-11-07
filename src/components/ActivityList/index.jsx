@@ -20,7 +20,7 @@ export default function ActivityList(props) {
   return (
     <main className="section">
       <h4 className="fw-normal fs-2 mb-3">
-        <Triangle className="me-4" />
+        <Triangle className="mb-1 me-4" />
         {city === '不分縣市' ? '熱門' : city}活動
       </h4>
       <Row xs={1} sm={2} as="ul" className="gx-6 gy-8">

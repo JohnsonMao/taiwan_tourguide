@@ -1,6 +1,7 @@
 import React from "react";
 
 import Pagination from "../../components/Pagination";
+import useHttp from "../../utils/useHttp";
 
 export default function ScenicSpot(props) {
   const { data, city } = props;

@@ -129,13 +129,13 @@ img
 
   &::before
   {
-    left: 2%;
-    transform: skewY(-12deg);
+    left: 3%;
+    transform: skewY(-14deg);
   }
   &::after
   {
-    right: 2%;
-    transform: skewY(12deg);
+    right: 3%;
+    transform: skewY(14deg);
   }
 
   &.activity::before
@@ -183,5 +183,5 @@ img
 }
 .text-shadow
 {
-  text-shadow: 2px 4px 4px $shadow;
+  text-shadow: 0 4px 4px $shadow;
 }

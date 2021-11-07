@@ -11,9 +11,9 @@ export default function CardList(props) {
     <section className="section">
       <h4 className="fw-normal fs-2 mb-3">
         {icon === "triangle" ? (
-          <Triangle className="me-4" />
+          <Triangle className="mb-1 me-4" />
         ) : (
-          <Square className="me-4" />
+          <Square className="mb-1 me-4" />
         )}
         {city === "不分縣市" ? '' + title : city + title.substr(-2)}
       </h4>

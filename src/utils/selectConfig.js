@@ -11,11 +11,11 @@ export const homeType = [
 export const foodAndInnType = [
   {
     type: "美食",
-    path: "/restaurant",
+    path: "/foodandinn/restaurant",
   },
   {
     type: "住宿",
-    path: "/hotel",
+    path: "/foodandinn/hotel",
   },
 ]
 export const cities = [

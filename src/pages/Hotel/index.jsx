@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function Hotel() {
+import Pagination from "../../components/Pagination";
+import useHttp from "../../utils/useHttp";
+
+export default function Hotel(props) {
+  const { data, city } = props;
   return (
-    <div>
-      
-    </div>
-  )
+    <Pagination
+      data={data}
+      city={city}
+      title="推薦住宿"
+      icon="square"
+      component="CardList"
+    />
+  );
 }

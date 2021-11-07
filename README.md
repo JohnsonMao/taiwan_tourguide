@@ -6,13 +6,15 @@
 |- 首頁 /
   |- 景點 /scenicSpot
   |- 活動 /activity
-|- 美食住宿 /food_and_inn
-  |- 美食 /restaurant
-  |- 住宿 /hotel
+|- 美食住宿 /foodandinn
+  |- 美食 /foodandinn/restaurant
+  |- 住宿 /foodandinn/hotel
 |- 交通 /bus
 ```
 
 ## 圖片來源
+
+Taiwan photo by <a href="https://unsplash.com/@jcs_chen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">JCS Chen</a> on <a href="https://unsplash.com/s/photos/%E8%87%BA%E7%81%A3?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 Night market photo by <a href="https://unsplash.com/@thevernon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Vernon Raineil Cenzon</a> on <a href="https://unsplash.com/s/photos/taiwan-scenic-spot?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 

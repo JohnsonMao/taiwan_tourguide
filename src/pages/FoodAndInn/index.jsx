@@ -8,6 +8,7 @@ import Restaurant from "../Restaurant";
 import Hotel from "../Hotel";
 import { paramCityFunc, cityNameFunc } from "../../utils/select";
 import { cities } from "../../utils/selectConfig";
+import useHttp from "../../utils/useHttp";
 
 function Index(props) {
   const { hotel, restaurant, city } = props;
@@ -36,11 +37,11 @@ export default function Home(props) {
       <Container>
         <Switch>
           <Route
-            path="/hotel"
+            path="/foodandinn/hotel"
             component={() => <Hotel city={cityName} data={hotel} />}
           />
           <Route
-            path="/restaurant"
+            path="/foodandinn/restaurant"
             component={() => (
               <Restaurant city={cityName} data={restaurant} />
             )}

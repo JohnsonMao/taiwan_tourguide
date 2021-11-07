@@ -10,9 +10,11 @@ import Activity from "../Activity";
 import ScenicSpot from "../ScenicSpot";
 import { paramCityFunc, cityNameFunc } from "../../utils/select";
 import { cities } from "../../utils/selectConfig";
+import useHttp from "../../utils/useHttp";
 
 function Index(props) {
   const { activity, restaurant, city } = props;
+
   return (
     <>
       <CityList />
@@ -22,8 +24,9 @@ function Index(props) {
   );
 }
 
-export default function Home(props) {
-  const { activity, restaurant, scenicSpot } = props;
+export default function Home() {
+  const {data, loading} = useHttp();
+  const {activity, scenicSpot, restaurant} = data;
   const activityHome = activity.slice(0, 4);
   const restaurantHome = restaurant.slice(0, 10);
   const { search } = useLocation();
@@ -32,7 +35,7 @@ export default function Home(props) {
   return (
     <>
       <Banner
-        img={`https://images.unsplash.com/photo-1552993873-0dd1110e025f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80`}
+        img={`https://images.unsplash.com/photo-1576430495691-84b2a311c70a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80`}
         typeStr="homeType"
       />
 

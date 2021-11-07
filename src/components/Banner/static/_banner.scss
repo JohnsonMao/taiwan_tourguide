@@ -46,8 +46,8 @@
     {
       content: '';
       position: absolute;
-      left: 65px;
-      top: 14px;
+      left: 37%;
+      top: 22%;
       width: 0;
       height: 0;
       border-style: solid;
@@ -59,15 +59,15 @@
 }
 .o
 {
-  margin-left: 4px;
-  width: 30px;
-  height: 30px;
-  border: 6px solid $primary;
-  transform: translateY(2px);
+  margin-left: 6px;
+  width: 32px;
+  height: 32px;
+  border: 7px solid $primary;
+  transform: translateY(3px);
 
   &_circle
   {
-    margin-left: 0;
+    margin: 0 2px;
     border-radius: 50%;
   }
 }
