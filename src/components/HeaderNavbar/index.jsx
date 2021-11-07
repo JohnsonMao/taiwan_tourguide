@@ -31,7 +31,7 @@ export default function HeaderNavbar() {
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to="/tourism" className="d-flex align-items-end">
+            <NavLink to="/foodandinn" className="d-flex align-items-end">
               <Square/>
               <span className="fs-5 lh-sm">美食住宿</span>
             </NavLink>

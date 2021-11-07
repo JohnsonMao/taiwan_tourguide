@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
 
-import CardList from "../../components/CardList";
+import Pagination from "../../components/Pagination";
 
 export default function ScenicSpot(props) {
-  const { scenicSpot, city } = props;
+  const { data, city } = props;
   return (
-    <CardList icon="triangle" title="風景" city={city} data={scenicSpot} />
-  )
+    <Pagination
+      data={data}
+      city={city}
+      title="熱門景點"
+      icon="triangle"
+      component="CardList"
+    />
+  );
 }

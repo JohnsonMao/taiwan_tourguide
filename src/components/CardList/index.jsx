@@ -15,7 +15,7 @@ export default function CardList(props) {
         ) : (
           <Square className="me-4" />
         )}
-        {city === "不分縣市" ? '熱門' + title : city + title}
+        {city === "不分縣市" ? '' + title : city + title.substr(-2)}
       </h4>
       <Row xs={2} sm={4} md={5} as="ul" className="gx-3 gy-6">
         {data.map((item, index) => (

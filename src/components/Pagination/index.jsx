@@ -5,7 +5,7 @@ import CardList from "../../components/CardList";
 import PageBar from "./PageBar";
 
 export default function Pagination(props) {
-  const { component, data, city } = props;
+  const { component, data, city, icon, title } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [indexList, setIndexList] = useState([]);
   const [lastPage, setLastPage] = useState(false);
@@ -14,9 +14,6 @@ export default function Pagination(props) {
   
   /* 換頁功能函式 */
   const handlePage = useCallback((pageNum) => {
-    if (pageNum !== currentPage) {
-      setCurrentPage(pageNum);
-    }
     const newIndexList = [];
     let maxIndex = 0;
     if (totalNum <= displayNum * pageNum) {
@@ -32,20 +29,20 @@ export default function Pagination(props) {
       newIndexList.push(data[i]);
     }
     setIndexList(newIndexList);
-  }, [currentPage, data, displayNum, lastPage, totalNum]);
+  }, [data, displayNum, lastPage, totalNum]);
 
   /* 換頁按鈕功能 */
   const pageClick = (e) => {
     const { page } = e.target.dataset;
     switch (page) {
       case "next":
-        if (!lastPage) handlePage(currentPage + 1);
+        if (!lastPage) setCurrentPage(currentPage + 1);
         break;
       case "prev":
-        if (currentPage !== 1) handlePage(currentPage - 1);
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
         break;
       default:
-        if (!isNaN(+page) && page > 0) handlePage(+page);
+        if (!isNaN(+page) && page > 0 && +page !== currentPage) setCurrentPage(+page);
     }
   };
 
@@ -58,7 +55,7 @@ export default function Pagination(props) {
       {component === "ActivityList" ? (
         <ActivityList data={indexList} city={city} />
       ) : (
-        <CardList data={indexList} city={city} />
+        <CardList title={title} icon={icon} data={indexList} city={city} />
       )}
       <PageBar
         currentPage={currentPage}
