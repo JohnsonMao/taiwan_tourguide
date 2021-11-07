@@ -4,10 +4,11 @@ import Pagination from "../../components/Pagination";
 import useHttp from "../../utils/useHttp";
 
 export default function Activity(props) {
-  const { city } = props;
+  const { city, param_city } = props;
+  console.log(param_city)
   
-  const { data, loading } = useHttp();
+  const { data, loading } = useHttp('activity', param_city, 60);
   return (
-    <Pagination data={data.activity} city={city} component="ActivityList" />
+    <Pagination data={data} city={city} component="ActivityList" />
   );
 }

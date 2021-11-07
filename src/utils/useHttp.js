@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 import {
   apiActivity,
@@ -7,37 +7,73 @@ import {
   apiHotel,
 } from "../api/index";
 
-export default function useHttp() {
+export default function useHttp(
+  type = "",
+  city = "",
+  count = 60,
+  page = 1,
+  filter = ""
+) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [data, setData] = useState({activity:[],restaurant:[],scenicSpot:[],hotel:[]});
+  const [data, setData] = useState([]);
+  const skip = page - 1;
 
-  useEffect(() => {  
+  useEffect(() => {
+    setData([]);
+    console.log('news')
+  }, [type])
+
+  useEffect(() => {
     setLoading(true);
     setError(false);
 
-    const updateData = async() => {
+    const updateData = async () => {
       try {
-        const { data: activity } = await apiActivity({$top:24})
-        const { data: scenicSpot } = await apiScenicSpot({$top:60})
-        const { data: restaurant } = await apiRestaurant({$top:60})
-        const { data: hotel } = await apiHotel({$top:60})
-        const newData = {activity, scenicSpot, restaurant, hotel};
-        setData(prevData => ({...prevData, ...newData}))
+        switch (type) {
+          case "activity":
+            const { data: activity } = await apiActivity(
+              { $top: count, $skip: count * skip },
+              city
+            );
+            setData(prevData => ([...prevData, ...activity]));
+            break;
+          case "scenicSpot":
+            const { data: scenicSpot } = await apiScenicSpot(
+              { $top: count, $skip: count * skip },
+              city
+            );
+            setData(prevData => ([...prevData, ...scenicSpot]));
+            break;
+          case "restaurant":
+            const { data: restaurant } = await apiRestaurant(
+              { $top: count, $skip: count * skip },
+              city
+            );
+            setData(prevData => ([...prevData, ...restaurant]));
+            break;
+          case "hotel":
+            const { data: hotel } = await apiHotel(
+              { $top: count, $skip: count * skip },
+              city
+            );
+            setData(prevData => ([...prevData, ...hotel]));
+            break;
+          case "bus":
+        }
         setLoading(false);
-        
-        console.log('get',newData)
       } catch (error) {
         setError(true);
       }
-    }
+    };
     const delay = setTimeout(() => {
-      updateData()
-    }, 0)
+      updateData();
+    }, 0);
     return () => {
       clearTimeout(delay);
-    }
-  }, []);
-  console.log('finish',data)
-  return {loading, error, data}
+    };
+    console.log('update')
+  }, [city, page, filter]);
+  console.log('run')
+  return { loading, error, data };
 }

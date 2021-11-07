@@ -25,13 +25,11 @@ function Index(props) {
 }
 
 export default function Home() {
-  const {data, loading} = useHttp();
-  const {activity, scenicSpot, restaurant} = data;
-  const activityHome = activity.slice(0, 4);
-  const restaurantHome = restaurant.slice(0, 10);
   const { search } = useLocation();
   const param_city = paramCityFunc(search);
   const cityName = cityNameFunc(cities, param_city);
+  const {data: activity, loading: activityLoading} = useHttp('activity', param_city, 4);
+  const {data: restaurant, loading: restaurantLoading} = useHttp('restaurant', param_city, 10);
   return (
     <>
       <Banner
@@ -43,12 +41,12 @@ export default function Home() {
         <Switch>
           <Route
             path="/activity"
-            component={() => <Activity city={cityName} data={activity} />}
+            component={() => <Activity city={cityName} param_city={param_city} />}
           />
           <Route
             path="/scenicspot"
             component={() => (
-              <ScenicSpot city={cityName} data={scenicSpot} />
+              <ScenicSpot city={cityName} param_city={param_city} />
             )}
           />
           <Route
@@ -56,8 +54,8 @@ export default function Home() {
             component={() => (
               <Index
                 city={cityName}
-                activity={activityHome}
-                restaurant={restaurantHome}
+                activity={activity}
+                restaurant={restaurant}
               />
             )}
           />
