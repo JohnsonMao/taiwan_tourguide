@@ -6,17 +6,26 @@ import useHttp from "../../utils/useHttp";
 import PageBar from "./PageBar";
 
 export default function Pagination(props) {
-  const { component, dataType, city, param_city, icon, title, nearby, keyword } = props;
+  const {
+    component,
+    dataType,
+    city,
+    param_city,
+    icon,
+    title,
+    nearby,
+    keyword,
+  } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [indexList, setIndexList] = useState([]);
   const [lastPage, setLastPage] = useState(false);
   const displayNum = component === "ActivityList" ? 8 : 20;
 
   /* displayNum * 8 預先取 8 頁內容 */
-  const api_param = 
+  const api_param =
     param_city === "nearby"
-    ? [dataType, param_city, displayNum * 8, currentPage, keyword, nearby]
-    : [dataType, param_city, displayNum * 8, currentPage, keyword];
+      ? [dataType, param_city, displayNum * 8, currentPage, keyword, nearby]
+      : [dataType, param_city, displayNum * 8, currentPage, keyword];
   const { data, loading } = useHttp(...api_param);
   const totalNum = data.length;
 
@@ -61,13 +70,19 @@ export default function Pagination(props) {
   useEffect(() => {
     handlePage(currentPage);
   }, [currentPage, handlePage]);
-
+  console.log(keyword)
   return (
     <main onClick={pageClick}>
       {component === "ActivityList" ? (
-        <ActivityList data={indexList} city={city} />
+        <ActivityList data={indexList} city={city} keyword={keyword} />
       ) : (
-        <CardList title={title} icon={icon} data={indexList} city={city} />
+        <CardList
+          title={title}
+          icon={icon}
+          data={indexList}
+          city={city}
+          keyword={keyword}
+        />
       )}
       <PageBar
         currentPage={currentPage}

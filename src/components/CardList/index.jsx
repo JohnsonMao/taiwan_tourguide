@@ -6,7 +6,7 @@ import { ReactComponent as Square } from "../../asset/icon/square.svg";
 import { ReactComponent as Map } from "../../asset/icon/map.svg";
 
 export default function CardList(props) {
-  const { icon, title, data, city } = props;
+  const { icon, title, data, city, keyword } = props;
   return (
     <section className="section">
       <h4 className="fw-normal fs-2 mb-3">
@@ -15,7 +15,11 @@ export default function CardList(props) {
         ) : (
           <Square className="mb-1 me-4" />
         )}
-        {city === "不分縣市" ? '' + title : city + title.substr(-2)}
+        {keyword.trim()
+          ? `有關「${keyword}」的${title.substr(-2)}`
+          : city === "不分縣市"
+          ? title
+          : city + title.substr(-2)}
       </h4>
       <Row xs={2} sm={4} md={5} as="ul" className="gx-3 gy-6">
         {data.map((item, index) => (
@@ -32,8 +36,10 @@ export default function CardList(props) {
                   {item.Name}
                 </Card.Title>
                 <Card.Text className="fs-6 fw-light text-info d-flex align-items-center pb-1">
-                  <Map className="flex-shrink-0"/>
-                  <span className="text-overflow text-overflow-1">{item.Address}</span>
+                  <Map className="flex-shrink-0" />
+                  <span className="text-overflow text-overflow-1">
+                    {item.Address}
+                  </span>
                 </Card.Text>
               </Card.Body>
             </Card>
