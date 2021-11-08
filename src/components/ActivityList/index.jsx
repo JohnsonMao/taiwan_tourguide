@@ -50,7 +50,7 @@ export default function ActivityList(props) {
                   </Card.Body>
                   <Card.Footer className="bg-light d-flex justify-content-between p-0 pe-3">
                     <div className="fs-5 d-flex align-items-center">
-                      <MapM className="fill-primary me-2" />
+                      <MapM className="fill-primary flex-shrink-0 me-2" />
                       <span className="text-overflow text-overflow-1">
                         {item.Location}
                       </span>

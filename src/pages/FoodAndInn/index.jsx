@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
@@ -10,16 +10,20 @@ import { paramCityFunc, cityNameFunc } from "../../utils/select";
 import { cities } from "../../utils/selectConfig";
 import useHttp from "../../utils/useHttp";
 
-function Index({city, param_city}) {
-  const { data: hotel, loading: hotelLoading } = useHttp(
-    "hotel",
-    param_city,
-    10
-  );
+function Index({ city, param_city, nearby, keyword }) {
+  const api_param =
+    param_city === "nearby"
+      ? {
+          hotel: ["hotel", param_city, 10, keyword, nearby],
+          restaurant: ["restaurant", param_city, 10, keyword, nearby],
+        }
+      : {
+          hotel: ["hotel", param_city, 10, keyword],
+          restaurant: ["restaurant", param_city, 10, keyword],
+        };
+  const { data: hotel, loading: hotelLoading } = useHttp(...api_param.hotel);
   const { data: restaurant, loading: restaurantLoading } = useHttp(
-    "restaurant",
-    param_city,
-    10
+    ...api_param.restaurant
   );
   return (
     <>
@@ -33,13 +37,23 @@ export default function FoodAndInn() {
   const { search } = useLocation();
   const param_city = paramCityFunc(search);
   const cityName = cityNameFunc(cities, param_city);
+  const [nearby, setNearby] = useState("");
+  const [keyword, setKeyword] = useState('');
+
+  const nearbyFunc = (e) => setNearby(e);
+  const keywordFunc = (e) => setKeyword(e);
+
   const bannerProps = {
     img: "https://images.unsplash.com/photo-1552993873-0dd1110e025f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80",
     typeStr: "foodAndInnType",
+    setNearby: nearbyFunc,
+    setKeyword: keywordFunc
   };
   const routeProps = {
     city: cityName,
     param_city: param_city,
+    nearby: nearby,
+    keyword: keyword,
   };
   return (
     <>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useGeolocation from "react-hook-geolocation";
 import { Card, Form, FormControl, Button, Row, Col } from "react-bootstrap";
 
 import { paramCityFunc, cityNameFunc, typeValueFunc } from '../../utils/select';
@@ -8,8 +9,7 @@ import { ReactComponent as Search } from "../../asset/icon/search.svg";
 import { ReactComponent as GPS } from "../../asset/icon/GPS.svg";
 import "./static/_banner.scss";
 
-export default function Banner(props) {
-  const { img, typeStr } = props;
+export default function Banner({ img, typeStr, setNearby, setKeyword }) {
   const { pathname, search } = useLocation();
   const type = typeStr === 'homeType' ? homeType : foodAndInnType;
   /* Get city from parameter */
@@ -17,6 +17,9 @@ export default function Banner(props) {
   /* Select Func */
   const cityName = cityNameFunc(cities, param_city);
   const typeValue = typeValueFunc(type, pathname);
+
+  /* keyword input */
+  const [keywordInput, setKeywordInput] = useState('');
 
   /* Select UI State */
   const [select, setSelect] = useState({
@@ -31,6 +34,12 @@ export default function Banner(props) {
   const SEARCH = "search";
   const SEARCH_BTN = "search_btn";
   const TOGGLE_GPS = "toggle_GPS";
+  const { latitude, longitude, error } = useGeolocation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setKeyword(keywordInput);
+  }
 
   /* Control Select onClick */
   const handleSelect = (e) => {
@@ -54,11 +63,15 @@ export default function Banner(props) {
         if (select.cityShow || select.typeShow) {
           setSelect({ cityShow: false, typeShow: false });
         }
+        setKeyword(keywordInput);
         break;
       case TOGGLE_GPS:
         if (select.cityShow || select.typeShow) {
           setSelect({ cityShow: false, typeShow: false });
         }
+        !error
+          ? setNearby(`nearby(${latitude}, ${longitude}, 2500)`)
+          : setNearby(error);
         break;
       default:
         if (select.cityShow || select.typeShow) {
@@ -66,7 +79,6 @@ export default function Banner(props) {
         }
     }
   };
-
   const configLink = {
     "data-node": SELECT_OPTION,
     className: "d-block px-3 py-2",
@@ -86,12 +98,13 @@ export default function Banner(props) {
             <Card.Text className="text-light">
               台北、台中、台南、屏東、宜蘭……遊遍台灣
             </Card.Text>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Row className="gx-2">
                 <Col>
                   <FormControl
                     className="h-100"
                     data-node={SEARCH}
+                    onChange={(e) => setKeywordInput(e.target.value)}
                     placeholder="搜尋關鍵字"
                     aria-label="搜尋關鍵字"
                   />
@@ -138,7 +151,7 @@ export default function Banner(props) {
                           </li>
                         ) : (
                           <li key={item.path} className="option order-1">
-                            <Link to={item.path + search} {...configLink}>
+                            <Link to={item.path + "?city=" + param_city} {...configLink}>
                               {item.type}
                             </Link>
                           </li>
@@ -170,7 +183,7 @@ export default function Banner(props) {
                       {cities.map((item) =>
                         item.City === param_city ? (
                           <li key="all" className="option">
-                            <Link to={pathname} {...configLink}>
+                            <Link to={pathname + "?city="} {...configLink}>
                               不分縣市
                             </Link>
                           </li>
@@ -189,14 +202,13 @@ export default function Banner(props) {
                   </div>
                 </Col>
                 <Col xs="auto">
-                  <Button
-                    variant="secondary"
-                    className="lh-1 p-2"
-                    as="button"
+                  <Link
+                    to={pathname + "?city=nearby"}
+                    className="btn btn-secondary lh-1 p-2"
                     data-node={TOGGLE_GPS}
                   >
                     <GPS data-node={TOGGLE_GPS} />
-                  </Button>
+                  </Link>
                 </Col>
               </Row>
             </Form>

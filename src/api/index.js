@@ -19,8 +19,7 @@ const initActivity = {
     "Charge",
     "StartTime",
     "EndTime",
-  ],
-  $filter: ["Picture/PictureUrl1 ne null"],
+  ]
 };
 /* 活動 API */
 export const apiActivity = (data = null, City = "") =>
@@ -37,7 +36,7 @@ const initRestaurant = {
     "OpenTime",
     "WebsiteUrl",
     "Class",
-  ],
+  ]
 };
 /* 餐飲 API */
 export const apiRestaurant = (data = null, City = "") =>
@@ -53,7 +52,7 @@ const initScenicSpot = {
     "Picture",
     "TicketInfo",
     "OpenTime",
-  ],
+  ]
 };
 /* 景點 API 
   Name,Description,Phone,Address,OpenTime,Picture,TicketInfo 
@@ -73,7 +72,7 @@ const initHotel = {
     "Class",
     "ServiceInfo",
     "Spec",
-  ],
+  ]
 };
 /* 住宿 API */
 export const apiHotel = (data = null, City = "") =>

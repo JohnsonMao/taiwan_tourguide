@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
-import './static/_headerNavbar.scss';
+import { paramCityFunc } from '../../utils/select';
 import { ReactComponent as Triangle } from './static/triangle.svg';
 import { ReactComponent as Square } from './static/square.svg';
 import { ReactComponent as Circle } from './static/circle.svg';
+import './static/_headerNavbar.scss';
 
 export default function HeaderNavbar() {
   const [isTop, setIsTop] = useState(true);
+  const { search } = useLocation();
+  const param_city = paramCityFunc(search);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -25,19 +28,19 @@ export default function HeaderNavbar() {
         </Navbar.Brand>
         <Nav as="ul" className="custom_nav">
           <Nav.Item as="li">
-            <NavLink to="/" className="d-flex align-items-end">
+            <NavLink to={`/?city=${param_city}`} className="d-flex align-items-end">
               <Triangle/>
               <span className="fs-5 lh-sm">台灣景點</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to="/foodandinn" className="d-flex align-items-end">
+            <NavLink to={`/foodandinn?city=${param_city}`} className="d-flex align-items-end">
               <Square/>
               <span className="fs-5 lh-sm">美食住宿</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to="/bus" className="d-flex align-items-end">
+            <NavLink to={`/bus?city=${param_city}`} className="d-flex align-items-end">
               <Circle/>
               <span className="fs-5 lh-sm">景點交通</span>
             </NavLink>

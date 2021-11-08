@@ -32,7 +32,7 @@ export default function CardList(props) {
                   {item.Name}
                 </Card.Title>
                 <Card.Text className="fs-6 fw-light text-info d-flex align-items-center pb-1">
-                  <Map />
+                  <Map className="flex-shrink-0"/>
                   <span className="text-overflow text-overflow-1">{item.Address}</span>
                 </Card.Text>
               </Card.Body>
