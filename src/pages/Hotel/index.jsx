@@ -1,17 +1,17 @@
 import React from "react";
 
 import Pagination from "../../components/Pagination";
-import useHttp from "../../utils/useHttp";
 
-export default function Hotel(props) {
-  const { data, city } = props;
+export default function Hotel({ city, param_city }) {
+  const childProps = {
+    dataType: 'hotel',
+    component: "CardList",
+    city: city,
+    param_city: param_city,
+    title: '推薦住宿',
+    icon: 'square'
+  }
   return (
-    <Pagination
-      data={data}
-      city={city}
-      title="推薦住宿"
-      icon="square"
-      component="CardList"
-    />
+    <Pagination {...childProps}/>
   );
 }

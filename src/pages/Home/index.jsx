@@ -12,8 +12,17 @@ import { paramCityFunc, cityNameFunc } from "../../utils/select";
 import { cities } from "../../utils/selectConfig";
 import useHttp from "../../utils/useHttp";
 
-function Index(props) {
-  const { activity, restaurant, city } = props;
+function Index({city, param_city}) {
+  const { data: activity, loading: activityLoading } = useHttp(
+    "activity",
+    param_city,
+    4
+  );
+  const { data: restaurant, loading: restaurantLoading } = useHttp(
+    "restaurant",
+    param_city,
+    10
+  );
 
   return (
     <>
@@ -28,37 +37,31 @@ export default function Home() {
   const { search } = useLocation();
   const param_city = paramCityFunc(search);
   const cityName = cityNameFunc(cities, param_city);
-  const {data: activity, loading: activityLoading} = useHttp('activity', param_city, 4);
-  const {data: restaurant, loading: restaurantLoading} = useHttp('restaurant', param_city, 10);
+
+  const bannerProps = {
+    img: "https://images.unsplash.com/photo-1576430495691-84b2a311c70a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+    typeStr: "homeType",
+  };
+  const routeProps = {
+    city: cityName,
+    param_city: param_city,
+  };
+
   return (
     <>
-      <Banner
-        img={`https://images.unsplash.com/photo-1576430495691-84b2a311c70a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80`}
-        typeStr="homeType"
-      />
+      <Banner {...bannerProps} />
 
       <Container>
         <Switch>
           <Route
             path="/activity"
-            component={() => <Activity city={cityName} param_city={param_city} />}
+            component={() => <Activity {...routeProps} />}
           />
           <Route
             path="/scenicspot"
-            component={() => (
-              <ScenicSpot city={cityName} param_city={param_city} />
-            )}
+            component={() => <ScenicSpot {...routeProps} />}
           />
-          <Route
-            path="/"
-            component={() => (
-              <Index
-                city={cityName}
-                activity={activity}
-                restaurant={restaurant}
-              />
-            )}
-          />
+          <Route path="/" component={() => <Index {...routeProps} />} />
         </Switch>
       </Container>
     </>

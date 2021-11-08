@@ -1,14 +1,16 @@
 import React from "react";
 
 import Pagination from "../../components/Pagination";
-import useHttp from "../../utils/useHttp";
 
-export default function Activity(props) {
-  const { city, param_city } = props;
-  console.log(param_city)
+export default function Activity({ city, param_city }) {
+  const childProps = {
+    dataType: 'activity',
+    component: "ActivityList",
+    city: city,
+    param_city: param_city
+  }
   
-  const { data, loading } = useHttp('activity', param_city, 60);
   return (
-    <Pagination data={data} city={city} component="ActivityList" />
+    <Pagination {...childProps}/>
   );
 }

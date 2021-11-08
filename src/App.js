@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import HeaderNavbar from "./components/HeaderNavbar";

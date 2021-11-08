@@ -1,17 +1,17 @@
 import React from "react";
 
 import Pagination from "../../components/Pagination";
-import useHttp from "../../utils/useHttp";
 
-export default function ScenicSpot(props) {
-  const { data, city } = props;
+export default function ScenicSpot({ city, param_city }) {
+  const childProps = {
+    dataType: 'scenicSpot',
+    component: "CardList",
+    city: city,
+    param_city: param_city,
+    title: '熱門景點',
+    icon: 'triangle'
+  }
   return (
-    <Pagination
-      data={data}
-      city={city}
-      title="熱門景點"
-      icon="triangle"
-      component="CardList"
-    />
+    <Pagination {...childProps}/>
   );
 }

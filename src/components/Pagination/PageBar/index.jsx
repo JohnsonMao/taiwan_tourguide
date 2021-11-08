@@ -42,7 +42,9 @@ export default function PageBar(props) {
   const Pages = pageArr.map((item) => (
     <Pagination.Item
       key={item.pageNum}
-      className={`p-2 ${item.isCurrentPage ? "active" : null}`}
+      className={`${item.isCurrentPage ? "active" : null} ${
+        item.pageNum > 9 ? "tens" : null
+      }`}
       data-page={item.pageNum}
       aria-label={item.pageNum + "page"}
       as="li"
@@ -57,7 +59,7 @@ export default function PageBar(props) {
         <li>
           <Button
             as="button"
-            className="swiper-button-prev"
+            className="swiper-button-prev me-2"
             data-page="prev"
             aria-label="previous page button"
             disabled={currentPage === 1}
@@ -67,7 +69,7 @@ export default function PageBar(props) {
         <li>
           <Button
             as="button"
-            className="swiper-button-next"
+            className="swiper-button-next ms-2"
             data-page="next"
             aria-label="next page button"
             disabled={lastPage}

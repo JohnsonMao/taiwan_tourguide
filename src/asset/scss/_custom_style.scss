@@ -51,7 +51,8 @@ img
     &-prev,
     &-next
     {
-      background: $light no-repeat center;
+      background: no-repeat center;
+      background-color: $light;
       height: 32px;
       width: 32px;
       border-radius: 3px;
@@ -60,7 +61,7 @@ img
 
       &:hover
       {
-        background: $dark no-repeat center;
+        background-color: $dark;
         color: $light;
       }
       &::after
@@ -98,8 +99,13 @@ img
   .swiper-button-next
   {
     position: static;
-    background: $dark no-repeat center;
-    transform: translateY(16px);
+    background-color: $dark;
+    transform: translateY(12px);
+
+    &:hover
+    {
+      background-color: $primary;
+    }
   }
   .swiper-button-prev
   { 
@@ -148,6 +154,23 @@ img
     right: 1%;
     transform: skewY(6deg);
   }
+}
+.page-link
+{
+  padding: 0 12px;
+  line-height: 2;
+  display: block;
+  color: $dark;
+  border-radius: 3px;
+}
+.tens .page-link
+{
+  padding: 0 8px;
+}
+.active .page-link
+{
+  color: $light;
+  background: $dark;
 }
 .title
 {

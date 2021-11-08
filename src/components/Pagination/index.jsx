@@ -2,16 +2,19 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import ActivityList from "../../components/ActivityList";
 import CardList from "../../components/CardList";
+import useHttp from "../../utils/useHttp";
 import PageBar from "./PageBar";
 
 export default function Pagination(props) {
-  const { component, data, city, icon, title } = props;
+  const { component, dataType, city, param_city, icon, title } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [indexList, setIndexList] = useState([]);
   const [lastPage, setLastPage] = useState(false);
   const displayNum = component === "ActivityList" ? 8 : 20;
-  const totalNum = data.length;
   
+  /* displayNum * 8 預先取 8 頁內容 */
+  const { data, loading } = useHttp(dataType, param_city, displayNum * 8, currentPage);
+  const totalNum = data.length;
   /* 換頁功能函式 */
   const handlePage = useCallback((pageNum) => {
     const newIndexList = [];
