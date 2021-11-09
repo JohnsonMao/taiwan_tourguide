@@ -5,8 +5,7 @@ import { ReactComponent as Triangle } from "../../asset/icon/triangle.svg";
 import { ReactComponent as MapM } from "../../asset/icon/map_M.svg";
 
 export default function ActivityList(props) {
-  const { data, city, keyword } = props;
-  console.log(keyword)
+  const { data, city, keyword, nearby } = props;
   /* 
   Address: "苗栗縣苑裡鎮中正里15鄰126-3號"
   Description: "由苗栗縣巧聖技藝傳統文化推展協會主辦－...
@@ -22,8 +21,10 @@ export default function ActivityList(props) {
     <main className="section">
       <h4 className="fw-normal fs-2 mb-3">
         <Triangle className="mb-1 me-4" />
-        {keyword.trim()
+        {keyword
           ? `有「${keyword}」關鍵字的`
+          : nearby 
+          ? '附近的'
           : city === "不分縣市"
           ? "熱門"
           : city}

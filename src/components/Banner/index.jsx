@@ -38,7 +38,7 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setKeyword(keywordInput);
+    setKeyword(keywordInput.trim());
   }
 
   /* Control Select onClick */
@@ -63,7 +63,7 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
         if (select.cityShow || select.typeShow) {
           setSelect({ cityShow: false, typeShow: false });
         }
-        setKeyword(keywordInput);
+        setKeyword(keywordInput.trim());
         break;
       case TOGGLE_GPS:
         if (select.cityShow || select.typeShow) {
@@ -84,7 +84,6 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
     className: "d-block px-3 py-2",
     replace: true,
   };
-
   return (
     <Card className="custom_banner custom_shadow p-5" onClick={handleSelect}>
       <div>
@@ -104,7 +103,8 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
                   <FormControl
                     className="h-100"
                     data-node={SEARCH}
-                    onChange={(e) => setKeywordInput(e.target.value)}
+                    onChange={(e) => setKeywordInput(e.target.value.trim())}
+                    value={keywordInput}
                     placeholder="搜尋關鍵字"
                     aria-label="搜尋關鍵字"
                   />
@@ -144,8 +144,8 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
                       </li>
                       {type.map((item) =>
                         item.path === pathname ? (
-                          <li key="/" className="option">
-                            <Link to={`/`} {...configLink}>
+                          <li key="/home" className="option">
+                            <Link to={`/home`} {...configLink}>
                               類別
                             </Link>
                           </li>

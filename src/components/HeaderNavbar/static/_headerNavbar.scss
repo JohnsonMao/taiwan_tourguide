@@ -16,26 +16,73 @@
 {
   a
   {
+    position: relative;
     padding: 26px 10px 10px;
+    &::before
+    {
+      content: attr(data-text);
+      margin: 26px 10px 0 24px;
+      padding: 8px 0 0 28px;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      font-size: calc($font-size-base * .875);
+      width: 0%;
+      height: 48%;
+      border-radius: 4px;
+      color: $light;
+      overflow: hidden;
+      transition: .3s;
+    }
+    &:hover::before,
+    &.active::before
+    {
+      padding: 8px 0 0 28px;
+      width: 70%;
+    }
   }
   span
   {
     margin: 6px 8px;
   }
-  li:nth-child(1) span
+  .link-red 
   {
-    color: $primary;
-    border-bottom: 1px solid $primary;
+    &:hover::before,
+    &.active::before
+    {
+      background: $primary;
+    }
+    span 
+    {
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
   }
-  li:nth-child(2) span
-  {
-    color: $secondary;
-    border-bottom: 1px solid $secondary;
+  .link-yellow
+  { 
+    &:hover::before,
+    &.active::before
+    {
+      background: $secondary
+    }
+    span
+    {
+      color: $secondary;
+      border-bottom: 1px solid $secondary;
+    }
   }
-  li:nth-child(3) span
+  .link-green
   {
-    color: $info;
-    border-bottom: 1px solid $info;
+    &:hover::before,
+    &.active::before
+    {
+      background: $info;
+    }
+    span
+    {
+      color: $info;
+      border-bottom: 1px solid $info;
+    }
   }
 }
 .container

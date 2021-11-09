@@ -16,7 +16,6 @@ SwiperCore.use([Navigation, Grid]);
 export default function CityList() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
   /* `$popularCities` */
   const popularCities = [
     {
@@ -104,7 +103,7 @@ export default function CityList() {
     <SwiperSlide key={index} tag="li">
       <Link to={`/scenicspot?city=${item.city}`}>
         <Card className={`shadow ${index % 3 === 0 ? "p-3 mt-fix me-1" : "p-2 me-1"}`}>
-          <Ratio aspectRatio={index % 3 === 0 ? "3x4" : "15x9"}>
+          <Ratio aspectRatio={index % 3 === 0 ? "3x4" : "5x3"}>
             <img src={item.img} alt={item.cityName} />
           </Ratio>
           <Card.ImgOverlay className="d-flex flex-column align-items-center justify-content-center">
@@ -122,18 +121,24 @@ export default function CityList() {
   const swiperConfig = {
     spaceBetween: 6,
     breakpoints: {
-      420: {
+      0: {
         slidesPerView: 2,
+        grid: {
+          rows: 1.5
+        },
       },
-      860: {
+      576: {
         slidesPerView: 4,
+        grid: {
+          rows: 1.5
+        },
       },
-      1024: {
+      992: {
         slidesPerView: 5,
+        grid: {
+          rows: 1.5
+        },
       },
-    },
-    grid: {
-      rows: 1.5
     },
     wrapperTag: "ul",
     onInit: (swiper) => {
@@ -163,7 +168,7 @@ export default function CityList() {
           className="swiper-button-next"
           ref={nextRef}
         ></Button>
-        <Ratio aspectRatio='15x4'>
+        <Ratio aspectRatio='cityList'>
           <Swiper {...swiperConfig}>{CitySwiperSlide}</Swiper>
         </Ratio>
       </div>

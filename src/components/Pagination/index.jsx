@@ -70,11 +70,15 @@ export default function Pagination(props) {
   useEffect(() => {
     handlePage(currentPage);
   }, [currentPage, handlePage]);
-  console.log(keyword)
   return (
     <main onClick={pageClick}>
       {component === "ActivityList" ? (
-        <ActivityList data={indexList} city={city} keyword={keyword} />
+        <ActivityList
+          data={indexList}
+          city={city}
+          keyword={keyword}
+          nearby={nearby}
+        />
       ) : (
         <CardList
           title={title}
@@ -82,6 +86,7 @@ export default function Pagination(props) {
           data={indexList}
           city={city}
           keyword={keyword}
+          nearby={nearby}
         />
       )}
       <PageBar

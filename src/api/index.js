@@ -10,6 +10,7 @@ const TOURISM_URL = "https://ptx.transportdata.tw/MOTC/v2/Tourism";
 /* 預設篩選活動資料 */
 const initActivity = {
   $select: [
+    "ID",
     "Name",
     "Description",
     "Address",
@@ -28,6 +29,7 @@ export const apiActivity = (data = null, City = "") =>
 /* 預設篩選餐廳資料 */
 const initRestaurant = {
   $select: [
+    "ID",
     "Name",
     "Description",
     "Address",
@@ -45,6 +47,7 @@ export const apiRestaurant = (data = null, City = "") =>
 /* 預設篩選景點資料 */
 const initScenicSpot = {
   $select: [
+    "ID",
     "Name",
     "Description",
     "Address",
@@ -63,6 +66,7 @@ export const apiScenicSpot = (data = null, City = "") =>
 /* 預設篩選住宿資料 */
 const initHotel = {
   $select: [
+    "ID",
     "Name",
     "Description",
     "Grade",

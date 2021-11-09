@@ -45,12 +45,20 @@ $font-sizes: (
   5: $font-size-base * .875,
   6: $font-size-base * .75
 );
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
 
 $container-max-widths: (
-  sm: 640px,
-  md: 760px,
-  lg: 860px,
-  xl: 1024px,
+  sm: 540px,
+  md: 720px,
+  lg: 840px,
+  xl: 1020px,
   xxl: 1200px
 );
 
@@ -76,6 +84,6 @@ $aspect-ratios: (
   "1x1": 100%,
   "4x3": calc(3 / 4 * 100%),
   "3x4": calc(4 / 3 * 100%),
-  "15x9": calc(9 / 15 * 100%),
-  "15x4": calc(4 / 15 * 100%)
+  "5x3": calc(3 / 5 * 100%),
+  "cityList": calc(4 / 15 * 100%)
 );

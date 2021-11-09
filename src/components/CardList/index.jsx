@@ -6,7 +6,7 @@ import { ReactComponent as Square } from "../../asset/icon/square.svg";
 import { ReactComponent as Map } from "../../asset/icon/map.svg";
 
 export default function CardList(props) {
-  const { icon, title, data, city, keyword } = props;
+  const { icon, title, data, city, keyword, nearby } = props;
   return (
     <section className="section">
       <h4 className="fw-normal fs-2 mb-3">
@@ -15,8 +15,10 @@ export default function CardList(props) {
         ) : (
           <Square className="mb-1 me-4" />
         )}
-        {keyword.trim()
+        {keyword
           ? `有關「${keyword}」的${title.substr(-2)}`
+          : nearby 
+          ? '附近的' + title.substr(-2)
           : city === "不分縣市"
           ? title
           : city + title.substr(-2)}

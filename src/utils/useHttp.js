@@ -33,9 +33,12 @@ export default function useHttp(
     };
   }, [newCount, count, skip]);
   /* 使用定位 nearby */
-  if (city === "nearby" && nearby) {
-    api_param.$spatialFilter = nearby;
+  if (city === "nearby") {
     city = "";
+
+    if (nearby) {
+      api_param.$spatialFilter = nearby;
+    }
   }
   /* 搜尋關鍵字 */
   const filterKeyword = `contains(Name,'${filter}') or contains(Address,'${filter}') or contains(Description,'${filter}')`;
@@ -83,7 +86,6 @@ export default function useHttp(
 
   useEffect(() => {
     setData([]);
-    console.log("clear");
   }, [type]);
 
   useEffect(() => {
@@ -92,12 +94,10 @@ export default function useHttp(
 
     const delay = setTimeout(() => {
       updateData();
-      console.log("update");
     }, 0);
     return () => {
       clearTimeout(delay);
     };
   }, [updateData]);
-  console.log("run");
   return { loading, error, data };
 }

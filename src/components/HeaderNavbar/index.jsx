@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
-import { paramCityFunc } from '../../utils/select';
-import { ReactComponent as Triangle } from './static/triangle.svg';
-import { ReactComponent as Square } from './static/square.svg';
-import { ReactComponent as Circle } from './static/circle.svg';
-import './static/_headerNavbar.scss';
+import { paramCityFunc } from "../../utils/select";
+import { ReactComponent as Triangle } from "./static/triangle.svg";
+import { ReactComponent as Square } from "./static/square.svg";
+import { ReactComponent as Circle } from "./static/circle.svg";
+import "./static/_headerNavbar.scss";
 
 export default function HeaderNavbar() {
   const [isTop, setIsTop] = useState(true);
@@ -14,39 +14,53 @@ export default function HeaderNavbar() {
   const param_city = paramCityFunc(search);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       const isTop = window.pageYOffset < 100;
       setIsTop(isTop);
     });
-  }, [])
+  }, []);
 
   return (
     <Navbar className="p-0" sticky="top" bg="light">
-      <Container className={`align-items-end ${isTop ? 'isTop' : null}`}>
+      <Container className={`align-items-end ${isTop ? "isTop" : null}`}>
         <Navbar.Brand as="h1" className="m-0">
-          <Link to="#" className="logo">Taiwan° Tourguide</Link>
+          <Link to="#" className="logo">
+            Taiwan° Tourguide
+          </Link>
         </Navbar.Brand>
         <Nav as="ul" className="custom_nav">
           <Nav.Item as="li">
-            <NavLink to={`/?city=${param_city}`} className="d-flex align-items-end">
-              <Triangle/>
+            <NavLink
+              to={`/home?city=${param_city}`}
+              data-text="台灣景點"
+              className="d-flex align-items-end link-red"
+            >
+              <Triangle className="position-relative"/>
               <span className="fs-5 lh-sm">台灣景點</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to={`/foodandinn?city=${param_city}`} className="d-flex align-items-end">
-              <Square/>
+            <NavLink
+              to={`/foodandinn?city=${param_city}`}
+              data-text="美食住宿"
+              className="d-flex align-items-end link-yellow"
+            >
+              <Square className="position-relative" />
               <span className="fs-5 lh-sm">美食住宿</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink to={`/bus?city=${param_city}`} className="d-flex align-items-end">
-              <Circle/>
+            <NavLink
+              to={`/bus?city=${param_city}`}
+              data-text="景點交通"
+              className="d-flex align-items-end link-green"
+            >
+              <Circle className="position-relative" />
               <span className="fs-5 lh-sm">景點交通</span>
             </NavLink>
           </Nav.Item>
         </Nav>
       </Container>
     </Navbar>
-  )
+  );
 }

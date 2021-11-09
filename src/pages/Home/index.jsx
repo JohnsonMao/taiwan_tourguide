@@ -66,14 +66,14 @@ export default function Home() {
       <Container>
         <Switch>
           <Route
-            path="/activity"
+            path="/home/activity"
             component={() => <Activity {...routeProps} />}
           />
           <Route
-            path="/scenicspot"
+            path="/home/scenicspot"
             component={() => <ScenicSpot {...routeProps} />}
           />
-          <Route path="/" component={() => <Index {...routeProps} />} />
+          <Route path="/home" component={() => <Index {...routeProps} />} />
         </Switch>
       </Container>
     </>
