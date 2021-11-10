@@ -42,7 +42,7 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
   }
 
   /* Control Select onClick */
-  const handleSelect = (e) => {
+  const handleSelect = async(e) => {
     const { node } = e.target.dataset;
     switch (node) {
       case SELECT_TYPE:
@@ -70,8 +70,8 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
           setSelect({ cityShow: false, typeShow: false });
         }
         !error
-          ? setNearby(`nearby(${latitude}, ${longitude}, 2500)`)
-          : setNearby(error);
+          ? await setNearby(`nearby(${latitude}, ${longitude}, 2500)`)
+          : await setNearby(error);
         break;
       default:
         if (select.cityShow || select.typeShow) {
@@ -162,8 +162,7 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
                 </Col>
                 <Col>
                   <div
-                    className={`position-
-                    lative h-100 select ${
+                    className={`position-relative h-100 select ${
                       select.cityShow ? "active" : null
                     }`}
                     tabIndex="0"
