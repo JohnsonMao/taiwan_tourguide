@@ -162,7 +162,8 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
                 </Col>
                 <Col>
                   <div
-                    className={`position-relative h-100 select ${
+                    className={`position-
+                    lative h-100 select ${
                       select.cityShow ? "active" : null
                     }`}
                     tabIndex="0"

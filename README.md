@@ -1,18 +1,32 @@
 # 台灣旅遊景點導覽 |
 
-## 路由架構
+## Introduction
+
+使用 React 串接 [TDX 運輸資料流通服務](https://tdx.transportdata.tw/) API，實作台灣旅遊景點導覽功能。
+
+## Features
+
+- [x] 關鍵字篩選功能
+- [x] 定位搜索附近功能
+- [x] 依地區分類功能
+- [ ] RWD 手機功能優化（開發中）
+- [ ] 交通資訊功能（開發中）
+
+## Route
 
 ```
-|- 首頁 /
-  |- 景點 /scenicSpot
-  |- 活動 /activity
+|- 首頁 /home
+  |- 景點 /home/scenicSpot
+  |- 活動 /home/activity
 |- 美食住宿 /foodandinn
   |- 美食 /foodandinn/restaurant
   |- 住宿 /foodandinn/hotel
 |- 交通 /bus
 ```
 
-## 圖片來源
+## Remark
+
+Design by [KT](https://www.behance.net/KT_Designer)
 
 Taiwan photo by <a href="https://unsplash.com/@jcs_chen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">JCS Chen</a> on <a href="https://unsplash.com/s/photos/%E8%87%BA%E7%81%A3?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 

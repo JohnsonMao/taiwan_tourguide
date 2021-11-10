@@ -1,11 +1,11 @@
 export const homeType = [
   {
     type: "景點",
-    path: "/scenicspot",
+    path: "/home/scenicspot",
   },
   {
     type: "活動",
-    path: "/activity",
+    path: "/home/activity",
   },
 ]
 export const foodAndInnType = [

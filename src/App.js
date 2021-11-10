@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import HeaderNavbar from "./components/HeaderNavbar";
 import Footer from "./components/Footer";
@@ -9,7 +9,7 @@ import Bus from "./pages/Bus";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <HeaderNavbar/>
       <Switch>
         <Route path="/home" component={Home}/>
@@ -18,6 +18,6 @@ export default function App() {
         <Redirect to="/home" />
       </Switch>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }

@@ -1,0 +1,26 @@
+.modal
+{
+  &-content
+  {
+    padding: 32px;
+    border-radius: 0;
+  }
+  img
+  {
+    object-position: center;
+  }
+  .swiper-button-prev,
+  .swiper-button-next
+  {
+    position: static;
+    margin: 22px 18px 22px 0;
+  }
+  .btn-primary
+  {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 12px);
+    padding: 10px;
+    line-height: 1;
+  }
+}

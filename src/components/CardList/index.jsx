@@ -23,7 +23,7 @@ export default function CardList(props) {
           ? title
           : city + title.substr(-2)}
       </h4>
-      <Row xs={2} sm={4} md={5} as="ul" className="gx-3 gy-6">
+      <Row xs={2} md={4} lg={5} as="ul" className="gx-3 gy-6">
         {data.map((item, index) => (
           <Col key={index} as="li">
             <Card className="custom_shadow p-3">

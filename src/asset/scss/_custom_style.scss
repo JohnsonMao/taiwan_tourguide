@@ -189,6 +189,15 @@ img
 {
   fill: $primary;
 }
+h2.text-overflow
+{
+  @include media-breakpoint-down(lg)
+  {
+    overflow: visible;
+    text-overflow: inherit;
+    display: block;
+  }
+}
 .text-overflow
 {
   overflow: hidden;
@@ -202,6 +211,14 @@ img
   &-5
   {
     -webkit-line-clamp: 5;
+    @include media-breakpoint-down(xl) 
+    {
+      -webkit-line-clamp: 3;
+    }
+    @include media-breakpoint-down(lg)
+    {
+      display: none;
+    } 
   }
 }
 .btn-primary:hover
