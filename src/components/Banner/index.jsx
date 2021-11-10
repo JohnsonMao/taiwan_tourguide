@@ -144,8 +144,8 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
                       </li>
                       {type.map((item) =>
                         item.path === pathname ? (
-                          <li key="/home" className="option">
-                            <Link to={`/home`} {...configLink}>
+                          <li key="index" className="option">
+                            <Link to={typeStr === 'homeType' ? '/home' : '/foodandinn'} {...configLink}>
                               類別
                             </Link>
                           </li>

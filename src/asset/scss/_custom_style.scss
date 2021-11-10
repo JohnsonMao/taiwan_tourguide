@@ -14,7 +14,21 @@ img
 }
 .select
 {
+  position: relative;
   cursor: pointer;
+
+  &::after
+  {
+    content: url(../icon/down.svg);
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translate(0, -14px);
+  }
+  &.active::after
+  {
+    content: '';
+  }
   ul
   {
     display: none;

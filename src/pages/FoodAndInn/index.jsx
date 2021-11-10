@@ -19,7 +19,7 @@ function Index({ city, param_city, nearby, keyword }) {
         }
       : {
           hotel: ["hotel", param_city, 10, 1, keyword],
-          restaurant: ["restaurant", param_city, 1, 10, keyword],
+          restaurant: ["restaurant", param_city, 10, 1, keyword],
         };
   const { data: hotel, loading: hotelLoading } = useHttp(...api_param.hotel);
   const { data: restaurant, loading: restaurantLoading } = useHttp(
