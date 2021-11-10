@@ -101,7 +101,7 @@ export default function CityList() {
   /* `$SwiperSlide` */
   const CitySwiperSlide = popularCities.map((item, index) => (
     <SwiperSlide key={index} tag="li">
-      <Link to={`/scenicspot?city=${item.city}`}>
+      <Link to={`/home/scenicspot?city=${item.city}`}>
         <Card className={`shadow ${index % 3 === 0 ? "p-3 mt-fix me-1" : "p-2 me-1"}`}>
           <Ratio aspectRatio={index % 3 === 0 ? "3x4" : "5x3"}>
             <img src={item.img} alt={item.cityName} />
