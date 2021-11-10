@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/taiwan_tourguide/static/css/main.b23d0a6e.chunk.css",
+    "main.css": "/taiwan_tourguide/static/css/main.fcb16c5f.chunk.css",
     "main.js": "/taiwan_tourguide/static/js/main.9c3873f0.chunk.js",
     "main.js.map": "/taiwan_tourguide/static/js/main.9c3873f0.chunk.js.map",
     "runtime-main.js": "/taiwan_tourguide/static/js/runtime-main.ee343cc2.js",
@@ -10,15 +10,15 @@
     "static/js/2.14693979.chunk.js.map": "/taiwan_tourguide/static/js/2.14693979.chunk.js.map",
     "index.html": "/taiwan_tourguide/index.html",
     "static/css/2.24858cf5.chunk.css.map": "/taiwan_tourguide/static/css/2.24858cf5.chunk.css.map",
-    "static/css/main.b23d0a6e.chunk.css.map": "/taiwan_tourguide/static/css/main.b23d0a6e.chunk.css.map",
+    "static/css/main.fcb16c5f.chunk.css.map": "/taiwan_tourguide/static/css/main.fcb16c5f.chunk.css.map",
     "static/js/2.14693979.chunk.js.LICENSE.txt": "/taiwan_tourguide/static/js/2.14693979.chunk.js.LICENSE.txt",
     "static/media/GPS.942f7523.svg": "/taiwan_tourguide/static/media/GPS.942f7523.svg",
     "static/media/circle.70f7e713.svg": "/taiwan_tourguide/static/media/circle.70f7e713.svg",
     "static/media/close.8a1ecf22.svg": "/taiwan_tourguide/static/media/close.8a1ecf22.svg",
+    "static/media/style.scss": "/taiwan_tourguide/static/media/prev.c264146c.svg",
     "static/media/_headerNavbar.scss": "/taiwan_tourguide/static/media/logo.64a0aa38.svg",
     "static/media/map.d324178b.svg": "/taiwan_tourguide/static/media/map.d324178b.svg",
     "static/media/map_M.b2481551.svg": "/taiwan_tourguide/static/media/map_M.b2481551.svg",
-    "static/media/style.scss": "/taiwan_tourguide/static/media/prev.c264146c.svg",
     "static/media/search.00efeba2.svg": "/taiwan_tourguide/static/media/search.00efeba2.svg",
     "static/media/square.d893fa35.svg": "/taiwan_tourguide/static/media/square.d893fa35.svg",
     "static/media/square.e247e0f4.svg": "/taiwan_tourguide/static/media/square.e247e0f4.svg",
@@ -32,7 +32,7 @@
     "static/js/runtime-main.ee343cc2.js",
     "static/css/2.24858cf5.chunk.css",
     "static/js/2.14693979.chunk.js",
-    "static/css/main.b23d0a6e.chunk.css",
+    "static/css/main.fcb16c5f.chunk.css",
     "static/js/main.9c3873f0.chunk.js"
   ]
 }
