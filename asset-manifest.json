@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/taiwan_tourguide/static/css/main.b23d0a6e.chunk.css",
-    "main.js": "/taiwan_tourguide/static/js/main.2996b4a6.chunk.js",
-    "main.js.map": "/taiwan_tourguide/static/js/main.2996b4a6.chunk.js.map",
+    "main.js": "/taiwan_tourguide/static/js/main.3de3830c.chunk.js",
+    "main.js.map": "/taiwan_tourguide/static/js/main.3de3830c.chunk.js.map",
     "runtime-main.js": "/taiwan_tourguide/static/js/runtime-main.ee343cc2.js",
     "runtime-main.js.map": "/taiwan_tourguide/static/js/runtime-main.ee343cc2.js.map",
     "static/css/2.24858cf5.chunk.css": "/taiwan_tourguide/static/css/2.24858cf5.chunk.css",
-    "static/js/2.0ef17364.chunk.js": "/taiwan_tourguide/static/js/2.0ef17364.chunk.js",
-    "static/js/2.0ef17364.chunk.js.map": "/taiwan_tourguide/static/js/2.0ef17364.chunk.js.map",
+    "static/js/2.14693979.chunk.js": "/taiwan_tourguide/static/js/2.14693979.chunk.js",
+    "static/js/2.14693979.chunk.js.map": "/taiwan_tourguide/static/js/2.14693979.chunk.js.map",
     "index.html": "/taiwan_tourguide/index.html",
     "static/css/2.24858cf5.chunk.css.map": "/taiwan_tourguide/static/css/2.24858cf5.chunk.css.map",
     "static/css/main.b23d0a6e.chunk.css.map": "/taiwan_tourguide/static/css/main.b23d0a6e.chunk.css.map",
-    "static/js/2.0ef17364.chunk.js.LICENSE.txt": "/taiwan_tourguide/static/js/2.0ef17364.chunk.js.LICENSE.txt",
+    "static/js/2.14693979.chunk.js.LICENSE.txt": "/taiwan_tourguide/static/js/2.14693979.chunk.js.LICENSE.txt",
     "static/media/GPS.942f7523.svg": "/taiwan_tourguide/static/media/GPS.942f7523.svg",
     "static/media/circle.70f7e713.svg": "/taiwan_tourguide/static/media/circle.70f7e713.svg",
     "static/media/close.8a1ecf22.svg": "/taiwan_tourguide/static/media/close.8a1ecf22.svg",
@@ -31,8 +31,8 @@
   "entrypoints": [
     "static/js/runtime-main.ee343cc2.js",
     "static/css/2.24858cf5.chunk.css",
-    "static/js/2.0ef17364.chunk.js",
+    "static/js/2.14693979.chunk.js",
     "static/css/main.b23d0a6e.chunk.css",
-    "static/js/main.2996b4a6.chunk.js"
+    "static/js/main.3de3830c.chunk.js"
   ]
 }
