@@ -5,6 +5,7 @@ import { Card, Form, FormControl, Button, Row, Col } from "react-bootstrap";
 
 import { paramCityFunc, cityNameFunc, typeValueFunc } from '../../utils/select';
 import { homeType, foodAndInnType, cities } from '../../utils/selectConfig';
+import { ReactComponent as LogoText } from "./static/logoText.svg";
 import { ReactComponent as Search } from "../../asset/icon/search.svg";
 import { ReactComponent as GPS } from "../../asset/icon/GPS.svg";
 import "./static/_banner.scss";
@@ -90,9 +91,8 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
         <img src={img} alt="banner" />
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">
           <div>
-            <Card.Title as="h2" className="text-light fs-1 fw-bold text-shadow">
-              Welc<i className="o o_circle shadow">o</i>me t<i className="o shadow">o</i>
-              <span className="text-primary"> Ta<i className="i_triangle shadow">i</i>wan</span>
+            <Card.Title as="h2" className="text-shadow">
+              <LogoText />
             </Card.Title>
             <Card.Text className="text-light">
               台北、台中、台南、屏東、宜蘭……遊遍台灣
