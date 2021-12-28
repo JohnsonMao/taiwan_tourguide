@@ -26,7 +26,7 @@ export default function Pagination(props) {
     param_city === "nearby"
       ? [dataType, param_city, displayNum * 8, currentPage, keyword, nearby]
       : [dataType, param_city, displayNum * 8, currentPage, keyword];
-  const { data, loading } = useHttp(...api_param);
+  const { data } = useHttp(...api_param);
   const totalNum = data.length;
 
   /* 換頁功能函式 */

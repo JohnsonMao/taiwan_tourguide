@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import useGeolocation from "react-hook-geolocation";
 import { Card, Form, FormControl, Button, Row, Col } from "react-bootstrap";
@@ -28,6 +28,12 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
     typeShow: false,
   });
 
+  const closeAllSelect = () => {
+    if (select.cityShow || select.typeShow) {
+      setSelect({ cityShow: false, typeShow: false });
+    }
+  }
+
   /* Select action type */
   const SELECT_TYPE = "select_type";
   const SELECT_CITY = "select_city";
@@ -56,37 +62,40 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
         setSelect({ cityShow: false, typeShow: false });
         break;
       case SEARCH:
-        if (select.cityShow || select.typeShow) {
-          setSelect({ cityShow: false, typeShow: false });
-        }
         break;
       case SEARCH_BTN:
-        if (select.cityShow || select.typeShow) {
-          setSelect({ cityShow: false, typeShow: false });
-        }
         setKeyword(keywordInput.trim());
         break;
       case TOGGLE_GPS:
-        if (select.cityShow || select.typeShow) {
-          setSelect({ cityShow: false, typeShow: false });
-        }
         !error
           ? await setNearby(`nearby(${latitude}, ${longitude}, 2500)`)
           : await setNearby(error);
         break;
       default:
-        if (select.cityShow || select.typeShow) {
-          setSelect({ cityShow: false, typeShow: false });
-        }
     }
   };
+  const handleAllSelect = (e) => {
+    if (select.cityShow || select.typeShow) {
+      setSelect({ cityShow: false, typeShow: false });
+    }
+    handleSelect(e)
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', handleAllSelect)
+    return () => {
+      window.removeEventListener('click', handleAllSelect)
+    }
+  }, [handleAllSelect])
+
   const configLink = {
     "data-node": SELECT_OPTION,
     className: "d-block px-3 py-2",
     replace: true,
   };
+  
   return (
-    <Card className="custom_banner custom_shadow p-5" onClick={handleSelect}>
+    <Card className="custom_banner custom_shadow p-5">
       <div>
         <img src={img} alt="banner" />
         <Card.ImgOverlay className="d-flex justify-content-center align-items-center">

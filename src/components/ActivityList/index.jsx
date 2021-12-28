@@ -41,7 +41,7 @@ export default function ActivityList(props) {
         </h4>
         <Row xs={1} sm={2} as="ul" className="gx-6 gy-8">
           {data.map((item) => (
-            <Col key={item.ID} as="li">
+            <Col key={item.ActivityID} as="li">
               <Card className="custom_shadow activity p-4 pe-5">
                 <Row className="gx-4">
                   <Col>
