@@ -34,6 +34,7 @@ function Index({ city, param_city, nearby, keyword }) {
         data={restaurant}
         nearby={nearby}
         keyword={keyword}
+        loading={restaurantLoading}
       />
       <CardList
         icon="square"
@@ -42,6 +43,7 @@ function Index({ city, param_city, nearby, keyword }) {
         data={hotel}
         nearby={nearby}
         keyword={keyword}
+        loading={hotelLoading}
       />
     </>
   );

@@ -1,0 +1,39 @@
+.loading
+{
+  svg
+  {
+    margin: 5px;
+  }
+  svg:nth-child(3n+1)
+  {
+    animation: jump 2s infinite;
+  }
+  svg:nth-child(3n+2)
+  {
+    animation: jump 2s .3s infinite;
+  }
+  svg:nth-child(3n)
+  {
+    animation: jump 2s .6s infinite;
+  }
+}
+
+@keyframes jump
+{
+  15%, 40%, 50%
+  {
+    transform: translateY(0);
+  }
+  25%
+  {
+    transform: translateY(-20px);
+  }
+  35%
+  {
+    transform: translateY(10px);
+  }
+  45%
+  {
+    transform: translateY(5px);
+  }
+}

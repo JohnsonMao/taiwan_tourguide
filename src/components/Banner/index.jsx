@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import useGeolocation from "react-hook-geolocation";
 import { Card, Form, FormControl, Button, Row, Col } from "react-bootstrap";
@@ -28,12 +28,6 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
     typeShow: false,
   });
 
-  const closeAllSelect = () => {
-    if (select.cityShow || select.typeShow) {
-      setSelect({ cityShow: false, typeShow: false });
-    }
-  }
-
   /* Select action type */
   const SELECT_TYPE = "select_type";
   const SELECT_CITY = "select_city";
@@ -49,7 +43,7 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
   }
 
   /* Control Select onClick */
-  const handleSelect = async(e) => {
+  const handleSelect = useCallback(async(e) => {
     const { node } = e.target.dataset;
     switch (node) {
       case SELECT_TYPE:
@@ -73,13 +67,14 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
         break;
       default:
     }
-  };
-  const handleAllSelect = (e) => {
+  }, [error, keywordInput, latitude, longitude, setKeyword, setNearby]);
+
+  const handleAllSelect = useCallback((e) => {
     if (select.cityShow || select.typeShow) {
       setSelect({ cityShow: false, typeShow: false });
     }
     handleSelect(e)
-  }
+  }, [select, setSelect, handleSelect])
 
   useEffect(() => {
     window.addEventListener('click', handleAllSelect)
@@ -93,7 +88,7 @@ export default function Banner({ img, typeStr, setNearby, setKeyword }) {
     className: "d-block px-3 py-2",
     replace: true,
   };
-  
+
   return (
     <Card className="custom_banner custom_shadow p-5">
       <div>

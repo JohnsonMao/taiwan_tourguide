@@ -26,7 +26,7 @@ function Index({ city, param_city, nearby, keyword }) {
   const { data: activity, loading: activityLoading } = useHttp(
     ...api_param.activity
   );
-  const { data: restaurant, loading: restaurantLoading, error } = useHttp(
+  const { data: restaurant, loading: restaurantLoading } = useHttp(
     ...api_param.restaurant
   );
   return (
@@ -37,7 +37,8 @@ function Index({ city, param_city, nearby, keyword }) {
         data={activity}
         nearby={nearby}
         keyword={keyword}
-      />
+        loading={activityLoading}
+        />
       <CardList
         icon="square"
         title="熱門美食"
@@ -45,6 +46,7 @@ function Index({ city, param_city, nearby, keyword }) {
         data={restaurant}
         nearby={nearby}
         keyword={keyword}
+        loading={restaurantLoading}
       />
     </>
   );
@@ -76,7 +78,7 @@ export default function Home() {
   return (
     <>
       <Banner {...bannerProps} />
-
+      
       <Container>
         <Switch>
           <Route
